@@ -9,6 +9,7 @@ import { ResumeComponent } from './pages/resume/resume.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminDisclaimerComponent } from './pages/admin/admin-disclaimer/admin-disclaimer.component';
 import { AdminConfigurationComponent } from './pages/admin/admin-configuration/admin-configuration.component';
+import { AdminAddExperiencesComponent } from './pages/admin/admin-add-experiences/admin-add-experiences.component';
 
 export const routes: Routes = [
 
@@ -23,10 +24,10 @@ export const routes: Routes = [
         path: 'admin', 
         component: AdminComponent,
         children: [
-            // Correction ici: soit redirectTo, soit component, pas les deux
             { path: '', redirectTo: 'disclaimer', pathMatch: 'full'},
             { path: 'disclaimer', component: AdminDisclaimerComponent },
-            { path: 'configuration', component: AdminConfigurationComponent }
+            { path: 'configuration', component: AdminConfigurationComponent },
+            { path: 'add-experiences', component: AdminAddExperiencesComponent }
         ] 
     },
 

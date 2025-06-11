@@ -1,0 +1,119 @@
+<div class="add-experience-container">
+    <h2>Ajouter une expérience professionnelle</h2>
+    
+    <!-- Message de succès -->
+    <div *ngIf="isSuccess" class="alert alert-success">
+      L'expérience a été ajoutée avec succès!
+    </div>
+    
+    <!-- Message d'erreur -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    
+    <!-- Formulaire -->
+    <form [formGroup]="ExperienceForm" (ngSubmit)="onSubmit()">
+      <!-- Entreprise -->
+      <div class="form-group">
+        <label for="company">Entreprise *</label>
+        <input 
+          type="text" 
+          id="company" 
+          formControlName="company" 
+          class="form-control" 
+          [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('company')?.errors }" 
+        />
+        <div *ngIf="isSubmitted && ExperienceForm.get('company')?.errors" class="invalid-feedback">
+          L'entreprise est requise
+        </div>
+      </div>
+      
+      <!-- Poste -->
+      <div class="form-group">
+        <label for="position">Poste *</label>
+        <input 
+          type="text" 
+          id="position" 
+          formControlName="position" 
+          class="form-control" 
+          [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('position')?.errors }" 
+        />
+        <div *ngIf="isSubmitted && ExperienceForm.get('position')?.errors" class="invalid-feedback">
+          Le poste est requis
+        </div>
+      </div>
+      
+      <!-- Localisation -->
+      <div class="form-group">
+        <label for="location">Localisation *</label>
+        <input 
+          type="text" 
+          id="location" 
+          formControlName="location" 
+          class="form-control" 
+          [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('location')?.errors }" 
+        />
+        <div *ngIf="isSubmitted && ExperienceForm.get('location')?.errors" class="invalid-feedback">
+          La localisation est requise
+        </div>
+      </div>
+      
+      <!-- Date de début -->
+      <div class="form-group">
+        <label for="start_date">Date de début *</label>
+        <input 
+          type="date" 
+          id="start_date" 
+          formControlName="start_date" 
+          class="form-control" 
+          [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('start_date')?.errors }" 
+        />
+        <div *ngIf="isSubmitted && ExperienceForm.get('start_date')?.errors" class="invalid-feedback">
+          La date de début est requise
+        </div>
+      </div>
+      
+      <!-- Emploi actuel -->
+      <div class="form-check mb-3">
+        <input 
+          type="checkbox" 
+          id="current" 
+          formControlName="current" 
+          class="form-check-input"
+        />
+        <label class="form-check-label" for="current">Je travaille actuellement ici</label>
+      </div>
+      
+      <!-- Date de fin (conditionnelle) -->
+      <div class="form-group" *ngIf="!ExperienceForm.get('current')?.value">
+        <label for="end_date">Date de fin</label>
+        <input 
+          type="date" 
+          id="end_date" 
+          formControlName="end_date" 
+          class="form-control"
+        />
+      </div>
+      
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description *</label>
+        <textarea 
+          id="description" 
+          formControlName="description" 
+          class="form-control" 
+          rows="5"
+          [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('description')?.errors }"
+        ></textarea>
+        <div *ngIf="isSubmitted && ExperienceForm.get('description')?.errors" class="invalid-feedback">
+          La description est requise
+        </div>
+      </div>
+      
+      <!-- Boutons d'action -->
+      <div class="form-group mt-4">
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="initExperienceForm()">Réinitialiser</button>
+      </div>
+    </form>
+  </div>

@@ -1,11 +1,16 @@
 <div class="root-container">
 
-  <app-header></app-header>
+  <!-- HEADER -->
+  <app-admin-header *ngIf="isAdminRoute"></app-admin-header>
+  <app-header *ngIf="!isAdminRoute"></app-header>
 
+  <!-- TITLE -->
   <h1>Portfolio Django/Angular</h1>
 
+  <!-- CONTAINER -->
   <router-outlet></router-outlet>
 
+  <!-- FOOTER -->
   <app-footer></app-footer>
 
 </div>

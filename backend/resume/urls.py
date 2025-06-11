@@ -10,8 +10,8 @@ from .views import (
 
 router = DefaultRouter()
 router.register('personal-info', PersonalInfoViewSet)
-router.register('technical-skills', TechnicalSkillViewSet)
-router.register('soft-skills', SoftSkillViewSet)
+router.register('technical-skill', TechnicalSkillViewSet)
+router.register('soft-skill', SoftSkillViewSet)
 router.register('education', EducationViewSet)
 router.register('work-experience', WorkExperienceViewSet)
 
