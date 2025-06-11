@@ -11,7 +11,7 @@ import { AdminAuthService } from './admin-auth.service';
 export class WorkExperienceService extends BaseAdminService {
   
   // UTILS
-  private apiUrl = 'http://localhost:8000/api/resume/work-experiences/';
+  private apiUrl = 'http://localhost:8000/api/resume/work-experience/';
   
   constructor(
     // Give every parameters of BaseAdminService constructor,
@@ -32,7 +32,10 @@ export class WorkExperienceService extends BaseAdminService {
   // SETTERS
   addWorkExperience(experience: WorkExperience): Observable<WorkExperience> {
     return this.executeAdminServicesOperation(() => {
-      return this.http.post<WorkExperience>(this.apiUrl, experience);
+
+      return this.http.post<WorkExperience>(this.apiUrl, experience, { 
+        withCredentials: true 
+      });
     })
   }
 }
