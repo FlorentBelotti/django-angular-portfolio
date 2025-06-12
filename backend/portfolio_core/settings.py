@@ -52,13 +52,16 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # DEV
+    # CORS
     'corsheaders.middleware.CorsMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+
+    # CSRF
+    'django.middleware.csrf.CsrfViewMiddleware',
+
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -150,11 +153,20 @@ CORS_ALLOW_CREDENTIALS = True
 # DEV ONLY
 # CORS_ALLOW_ALL_ORIGINS = True
 
+# CSRF SETTINGS
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:4200",
     "http://127.0.0.1:4200",
     "http://frontend:4200"
 ]
+
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_HEADER_NAME = "HTTP_X_CSRFTOKEN"
+CSRF_COOKIE_HTTPONLY = False
+
+# DEV ONLY, 'STRICT' FOR PROD
+CSRF_COOKIE_SAMESITE = 'Lax'
+
 
 # API (DEV)
 REST_FRAMEWORK = {
