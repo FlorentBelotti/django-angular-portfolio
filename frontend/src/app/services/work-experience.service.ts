@@ -31,9 +31,9 @@ export class WorkExperienceService extends BaseAdminService {
   
   // SETTERS
   addWorkExperience(experience: WorkExperience): Observable<WorkExperience> {
-    return this.executeAdminServicesOperation(() => {
-
-      return this.http.post<WorkExperience>(this.apiUrl, experience, { 
+    return this.executeAdminServicesOperation((headers) => {
+      return this.http.post<WorkExperience>(this.apiUrl, experience, {
+        headers,
         withCredentials: true 
       });
     })

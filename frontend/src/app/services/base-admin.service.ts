@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { AdminAuthService } from './admin-auth.service';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable()
 export abstract class BaseAdminService {
@@ -12,13 +13,18 @@ export abstract class BaseAdminService {
   ) { }
   
   // TO ASK : is using a <T> to allow every kind of Observable a good practice ?
-  protected executeAdminServicesOperation<T>(operation: () => Observable<T>): Observable<T> {
+  protected executeAdminServicesOperation<T>(operation: (headers?: HttpHeaders) => Observable<T>): Observable<T> {
     
-    // AUTHENTICATION (admin-auth.service.ts)
-    if (!this.adminAuthService.adminGuardAccess()) {
-      return throwError(() => new Error('Unauthorized: Only admin users can perform this operation'));
-    }
-    
-    return operation();
+    // AUTHENTICATION + CSRF (admin-auth.service.ts)
+    return this.adminAuthService.adminGuardAccess().pipe(
+      switchMap(result => {
+        if (!result.access) {
+          return throwError(() => new Error('[WARNING]: Unauthorized, Only admin users can perform this operation'));
+        }
+        
+        // Pass the header
+        return operation(result.headers);
+      })
+    );
   }
 }
