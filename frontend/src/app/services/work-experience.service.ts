@@ -26,7 +26,12 @@ export class WorkExperienceService extends BaseAdminService {
 
   // GETTER
   getWorkExperiences(): Observable<WorkExperience[]> {
-    return this.http.get<WorkExperience[]>(this.apiUrl);
+    return this.executeAdminServicesOperation((headers) => {
+      return this.http.get<WorkExperience[]>(this.apiUrl, {
+        headers,
+        withCredentials: true
+      });
+    }); 
   }
   
   // SETTERS
