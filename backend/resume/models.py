@@ -44,6 +44,7 @@ class Education(models.Model):
         return f"{self.degree} - {self.institution}"
 
 class WorkExperience(models.Model):
+    # Details
     company = models.CharField(max_length=200)
     position = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
@@ -51,6 +52,6 @@ class WorkExperience(models.Model):
     end_date = models.DateField(null=True, blank=True)
     current = models.BooleanField(default=False)
     description = models.TextField()
-    
+
     def __str__(self):
         return f"{self.position} at {self.company}"

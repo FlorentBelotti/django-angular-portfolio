@@ -14,12 +14,12 @@ export class WorkExperienceService {
   constructor(private http: HttpClient) { }
 
   // GETTER
-  getWorkExperiences(): Observable<WorkExperience[]> {
+  get(): Observable<WorkExperience[]> {
     return this.http.get<WorkExperience[]>(this.apiUrl);
   }
   
   // SETTER
-  addWorkExperience(experience: WorkExperience): Observable<WorkExperience> {
+  add(experience: WorkExperience): Observable<WorkExperience> {
     return this.http.post<WorkExperience>(this.apiUrl, experience);
   }
 }

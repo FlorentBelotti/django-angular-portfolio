@@ -1,21 +1,22 @@
 <div class="add-experience-container">
-    <h2>Ajouter une expérience professionnelle</h2>
+    <h2>Add a professional experience</h2>
     
-    <!-- Message de succès -->
+    <!-- Success -->
     <div *ngIf="isSuccess" class="alert alert-success">
-      L'expérience a été ajoutée avec succès!
+      Professional experience successfully added.
     </div>
     
-    <!-- Message d'erreur -->
+    <!-- Error -->
     <div *ngIf="errorMessage" class="alert alert-danger">
       {{ errorMessage }}
     </div>
     
-    <!-- Formulaire -->
+    <!-- Form -->
     <form [formGroup]="ExperienceForm" (ngSubmit)="onSubmit()">
-      <!-- Entreprise -->
+
+      <!-- Enterprise -->
       <div class="form-group">
-        <label for="company">Entreprise *</label>
+        <label for="company">Company *</label>
         <input 
           type="text" 
           id="company" 
@@ -24,13 +25,13 @@
           [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('company')?.errors }" 
         />
         <div *ngIf="isSubmitted && ExperienceForm.get('company')?.errors" class="invalid-feedback">
-          L'entreprise est requise
+          Company is requested
         </div>
       </div>
       
-      <!-- Poste -->
+      <!-- Position -->
       <div class="form-group">
-        <label for="position">Poste *</label>
+        <label for="position">Position *</label>
         <input 
           type="text" 
           id="position" 
@@ -39,7 +40,7 @@
           [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('position')?.errors }" 
         />
         <div *ngIf="isSubmitted && ExperienceForm.get('position')?.errors" class="invalid-feedback">
-          Le poste est requis
+          Position is requested
         </div>
       </div>
       
@@ -54,13 +55,13 @@
           [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('location')?.errors }" 
         />
         <div *ngIf="isSubmitted && ExperienceForm.get('location')?.errors" class="invalid-feedback">
-          La localisation est requise
+          Localisation is requested
         </div>
       </div>
       
       <!-- Date de début -->
       <div class="form-group">
-        <label for="start_date">Date de début *</label>
+        <label for="start_date">Starting date *</label>
         <input 
           type="date" 
           id="start_date" 
@@ -69,11 +70,11 @@
           [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('start_date')?.errors }" 
         />
         <div *ngIf="isSubmitted && ExperienceForm.get('start_date')?.errors" class="invalid-feedback">
-          La date de début est requise
+          Starting date is requested
         </div>
       </div>
       
-      <!-- Emploi actuel -->
+      <!-- Current position -->
       <div class="form-check mb-3">
         <input 
           type="checkbox" 
@@ -81,12 +82,12 @@
           formControlName="current" 
           class="form-check-input"
         />
-        <label class="form-check-label" for="current">Je travaille actuellement ici</label>
+        <label class="form-check-label" for="current">Current position</label>
       </div>
       
-      <!-- Date de fin (conditionnelle) -->
+      <!-- Conditionnal end date -->
       <div class="form-group" *ngIf="!ExperienceForm.get('current')?.value">
-        <label for="end_date">Date de fin</label>
+        <label for="end_date">End date</label>
         <input 
           type="date" 
           id="end_date" 
@@ -106,14 +107,19 @@
           [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('description')?.errors }"
         ></textarea>
         <div *ngIf="isSubmitted && ExperienceForm.get('description')?.errors" class="invalid-feedback">
-          La description est requise
+          Description is requested
         </div>
       </div>
       
       <!-- Boutons d'action -->
       <div class="form-group mt-4">
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
-        <button type="button" class="btn btn-secondary ms-2" (click)="initExperienceForm()">Réinitialiser</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="initExperienceForm()">Clear</button>
       </div>
     </form>
   </div>
+
+<div class ="show-experience-order">
+  <h2>List of your professionnal experiences</h2>
+  
+</div>

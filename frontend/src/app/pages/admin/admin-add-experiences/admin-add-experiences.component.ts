@@ -83,7 +83,7 @@ export class AdminAddExperiencesComponent implements OnInit {
       if (experienceFormData.current)
         experienceFormData.end_date = null;
 
-      this.workExperienceService.addWorkExperience(experienceFormData).subscribe({
+      this.workExperienceService.add(experienceFormData).subscribe({
         next: (response) => {
           this.isSuccess = true;
           this.ExperienceForm.reset();

@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class CsrfManagementService {
+export class AuthService {
 
   private csrfUrl = 'http://localhost:8000/api/csrf-token/';
   private isTokenFetched = false;
