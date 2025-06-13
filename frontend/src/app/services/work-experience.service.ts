@@ -22,4 +22,8 @@ export class WorkExperienceService {
   add(experience: WorkExperience): Observable<WorkExperience> {
     return this.http.post<WorkExperience>(this.apiUrl, experience);
   }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}${id}/`);
+  }
 }

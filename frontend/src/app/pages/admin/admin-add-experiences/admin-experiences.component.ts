@@ -8,10 +8,10 @@ import { WorkExperience } from '../../../interfaces/work-experience.model';
   selector: 'app-admin-add-experiences',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  templateUrl: './admin-add-experiences.component.html',
-  styleUrl: './admin-add-experiences.component.css'
+  templateUrl: './admin-experiences.component.html',
+  styleUrl: './admin-experiences.component.css'
 })
-export class AdminAddExperiencesComponent implements OnInit {
+export class AdminExperiencesComponent implements OnInit {
 
   // UTILS
 
@@ -30,6 +30,9 @@ export class AdminAddExperiencesComponent implements OnInit {
   // Experiences list
     experiences_list: WorkExperience[] = [];
 
+  // Deletion
+    deleteConfirmationId: number | null = null;
+
   constructor(
     protected formBuilder: FormBuilder,
     protected workExperienceService: WorkExperienceService
@@ -37,13 +40,13 @@ export class AdminAddExperiencesComponent implements OnInit {
 
   // INIT
 
-  // Class init
   ngOnInit(): void {
     this.initExperienceForm();
     this.loadExperiences();
   }
 
-  // Display
+  // DISPLAY
+
   loadExperiences(): void {
     this.workExperienceService.get().subscribe({
       next: (data) => {
@@ -61,7 +64,8 @@ export class AdminAddExperiencesComponent implements OnInit {
     return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
   }
 
-  // Form init
+  // FORM
+
   initExperienceForm(): void {
 
     // Each field is a different form control.
@@ -89,8 +93,6 @@ export class AdminAddExperiencesComponent implements OnInit {
       }
     });
   }
-
-    // SUBMISSION
 
     onSubmit(): void {
       this.isSubmitted = true;
@@ -124,4 +126,27 @@ export class AdminAddExperiencesComponent implements OnInit {
         }
       })
     }
+
+    // DELETION
+
+  confirmDelete(id: number): void {
+    this.deleteConfirmationId = id;
+  }
+  
+  cancelDelete(): void {
+    this.deleteConfirmationId = null;
+  }
+  
+  deleteExperience(id: number): void {
+    this.workExperienceService.delete(id).subscribe({
+      next: () => {
+        this.deleteConfirmationId = null;
+        this.loadExperiences();
+      },
+      error: (error) => {
+        this.errorMessage = '[ERROR]: Deleting experience.';
+        console.error(this.errorMessage, error);
+      }
+    });
+  }
 }
