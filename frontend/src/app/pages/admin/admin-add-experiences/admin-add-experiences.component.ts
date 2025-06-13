@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WorkExperienceService } from '../../../services/work-experience.service';
+import { WorkExperience } from '../../../interfaces/work-experience.model';
 
 @Component({
   selector: 'app-admin-add-experiences',
@@ -26,6 +27,9 @@ export class AdminAddExperiencesComponent implements OnInit {
   // Error management
     errorMessage = '';
 
+  // Experiences list
+    experiences_list: WorkExperience[] = [];
+
   constructor(
     protected formBuilder: FormBuilder,
     protected workExperienceService: WorkExperienceService
@@ -36,6 +40,25 @@ export class AdminAddExperiencesComponent implements OnInit {
   // Class init
   ngOnInit(): void {
     this.initExperienceForm();
+    this.loadExperiences();
+  }
+
+  // Display
+  loadExperiences(): void {
+    this.workExperienceService.get().subscribe({
+      next: (data) => {
+        this.experiences_list = data;
+      },
+      error: (error) => {
+        console.error('Error loading experiences', error);
+      }
+    });
+  }
+
+  formatDate(date: string | null | undefined): string {
+    if (!date) return 'Present';
+    const d = new Date(date);
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
   }
 
   // Form init

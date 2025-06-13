@@ -44,9 +44,9 @@
         </div>
       </div>
       
-      <!-- Localisation -->
+      <!-- Location -->
       <div class="form-group">
-        <label for="location">Localisation *</label>
+        <label for="location">Location *</label>
         <input 
           type="text" 
           id="location" 
@@ -55,7 +55,7 @@
           [ngClass]="{ 'is-invalid': isSubmitted && ExperienceForm.get('location')?.errors }" 
         />
         <div *ngIf="isSubmitted && ExperienceForm.get('location')?.errors" class="invalid-feedback">
-          Localisation is requested
+          Location is requested
         </div>
       </div>
       
@@ -119,7 +119,23 @@
     </form>
   </div>
 
-<div class ="show-experience-order">
-  <h2>List of your professionnal experiences</h2>
-  
-</div>
+  <div class="show-experience-order">
+    <h2>List of your professional experiences</h2>
+    
+    <div *ngIf="experiences_list.length === 0" class="alert alert-info">
+      No professional experiences added yet.
+    </div>
+    
+    <div class="experience-list">
+      <div *ngFor="let exp of experiences_list" class="experience-item">
+        <div class="experience-header">
+          <span class="experience-date">
+            {{ formatDate(exp.start_date) }} - {{ exp.current ? 'Present' : formatDate(exp.end_date) }}
+          </span>
+          <h3 class="experience-title">{{ exp.position }} at {{ exp.company }}</h3>
+        </div>
+        <p class="experience-description">{{ exp.description }}</p>
+        <hr>
+      </div>
+    </div>
+  </div>

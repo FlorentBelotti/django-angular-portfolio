@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from .models import PersonalInfo, TechnicalSkill, SoftSkill, Education, WorkExperience
 from .serializers import PersonalInfoSerializer, TechnicalSkillSerializer, SoftSkillSerializer, EducationSerializer, WorkExperienceSerializer
+from django.db.models import Case, When, Value, IntegerField, F
 
 # READ ONLY VIEWS
 
@@ -21,5 +22,13 @@ class EducationViewSet(viewsets.ModelViewSet):
     serializer_class = EducationSerializer
 
 class WorkExperienceViewSet(viewsets.ModelViewSet):
-    queryset = WorkExperience.objects.all()
+
+    queryset = WorkExperience.objects.annotate(
+        sort_order=Case(
+            When(current=True, then=Value(1)),
+            default=Value(0),
+            output_field=IntegerField(),
+        )
+    ).order_by('-sort_order', '-end_date', '-start_date')
+    
     serializer_class = WorkExperienceSerializer
