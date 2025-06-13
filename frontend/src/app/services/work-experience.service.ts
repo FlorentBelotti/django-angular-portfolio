@@ -18,9 +18,17 @@ export class WorkExperienceService {
     return this.http.get<WorkExperience[]>(this.apiUrl);
   }
   
+  getById(id: number): Observable<WorkExperience> {
+    return this.http.get<WorkExperience>(`${this.apiUrl}${id}/`);
+  }
+
   // SETTER
   add(experience: WorkExperience): Observable<WorkExperience> {
     return this.http.post<WorkExperience>(this.apiUrl, experience);
+  }
+
+  update(id: number, experience: WorkExperience): Observable<WorkExperience> {
+    return this.http.put<WorkExperience>(`${this.apiUrl}${id}/`, experience);
   }
 
   delete(id: number): Observable<void> {

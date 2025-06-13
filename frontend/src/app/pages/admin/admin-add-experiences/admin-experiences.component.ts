@@ -23,6 +23,7 @@ export class AdminExperiencesComponent implements OnInit {
   // Process validation
     isSubmitted = false;
     isSuccess = false;
+    successMessage = '';
   
   // Error management
     errorMessage = '';
@@ -32,6 +33,10 @@ export class AdminExperiencesComponent implements OnInit {
 
   // Deletion
     deleteConfirmationId: number | null = null;
+    
+  // Edition
+    isEditMode = false;
+    currentEditId: number | null = null;
 
   constructor(
     protected formBuilder: FormBuilder,
@@ -67,7 +72,6 @@ export class AdminExperiencesComponent implements OnInit {
   // FORM
 
   initExperienceForm(): void {
-
     // Each field is a different form control.
     this.ExperienceForm = this.formBuilder.group({
       company: ['', Validators.required],
@@ -81,7 +85,6 @@ export class AdminExperiencesComponent implements OnInit {
     
     // DYNAMIC FIELDS MANAGEMENT
     this.ExperienceForm.get('current')?.valueChanges.subscribe(value => {
-
       // End Date form control
       const endDateControl = this.ExperienceForm.get('end_date');
 
@@ -94,40 +97,93 @@ export class AdminExperiencesComponent implements OnInit {
     });
   }
 
-    onSubmit(): void {
-      this.isSubmitted = true;
-      this.isSuccess = false;
-      this.errorMessage = '';
+  // EDIT MODE
 
-      // From group verification
-      if (this.ExperienceForm.invalid)
-        return;
+  editExperience(experience: WorkExperience): void {
+    this.isEditMode = true;
+    this.currentEditId = experience.id;
+    this.successMessage = '';
+    this.errorMessage = '';
+    
+    // Format date strings for the date input (YYYY-MM-DD)
+    const startDate = experience.start_date ? new Date(experience.start_date).toISOString().split('T')[0] : '';
+    const endDate = experience.end_date ? new Date(experience.end_date).toISOString().split('T')[0] : '';
+    
+    // Populate form with existing data
+    this.ExperienceForm.patchValue({
+      company: experience.company,
+      position: experience.position,
+      location: experience.location,
+      start_date: startDate,
+      end_date: endDate,
+      current: experience.current,
+      description: experience.description
+    });
+    
+    // Scroll to form for better user experience
+    setTimeout(() => {
+      document.querySelector('.add-experience-container')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+  
+  cancelEdit(): void {
+    this.isEditMode = false;
+    this.currentEditId = null;
+    this.initExperienceForm();
+    this.successMessage = '';
+  }
 
-      // Dynamic fields management
-      const experienceFormData = { ...this.ExperienceForm.value };
-      if (experienceFormData.current)
-        experienceFormData.end_date = null;
+  // SUBMISSION
+  onSubmit(): void {
+    this.isSubmitted = true;
+    this.successMessage = '';
+    this.errorMessage = '';
 
-      this.workExperienceService.add(experienceFormData).subscribe({
+    // Form group verification
+    if (this.ExperienceForm.invalid)
+      return;
+
+    // Dynamic fields management
+    const experienceFormData = { ...this.ExperienceForm.value };
+    if (experienceFormData.current)
+      experienceFormData.end_date = null;
+
+    if (this.isEditMode && this.currentEditId) {
+      // Update existing experience
+      this.workExperienceService.update(this.currentEditId, experienceFormData).subscribe({
         next: (response) => {
-          this.isSuccess = true;
+          this.successMessage = 'Experience successfully updated.';
           this.ExperienceForm.reset();
           this.isSubmitted = false;
-
-          // To check
+          this.isEditMode = false;
+          this.currentEditId = null;
           this.initExperienceForm();
-          
-          // Update work experience
+          this.loadExperiences();
+        },
+        error: (error) => {
+          this.errorMessage = '[ERROR]: Updating experience.';
+          console.error(this.errorMessage, error);
+        }
+      });
+    } else {
+      // Add new experience
+      this.workExperienceService.add(experienceFormData).subscribe({
+        next: (response) => {
+          this.successMessage = 'Experience successfully added.';
+          this.ExperienceForm.reset();
+          this.isSubmitted = false;
+          this.initExperienceForm();
           this.loadExperiences();
         },
         error: (error) => {
           this.errorMessage = '[ERROR]: Adding experience.';
           console.error(this.errorMessage, error);
         }
-      })
+      });
     }
+  }
 
-    // DELETION
+  // DELETION
 
   confirmDelete(id: number): void {
     this.deleteConfirmationId = id;
@@ -141,6 +197,15 @@ export class AdminExperiencesComponent implements OnInit {
     this.workExperienceService.delete(id).subscribe({
       next: () => {
         this.deleteConfirmationId = null;
+        this.successMessage = 'Experience successfully deleted.';
+        
+        // If deleting currently edited experience, reset form
+        if (this.currentEditId === id) {
+          this.isEditMode = false;
+          this.currentEditId = null;
+          this.initExperienceForm();
+        }
+        
         this.loadExperiences();
       },
       error: (error) => {
