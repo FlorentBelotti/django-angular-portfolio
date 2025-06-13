@@ -114,6 +114,9 @@ export class AdminAddExperiencesComponent implements OnInit {
 
           // To check
           this.initExperienceForm();
+          
+          // Update work experience
+          this.loadExperiences();
         },
         error: (error) => {
           this.errorMessage = '[ERROR]: Adding experience.';
