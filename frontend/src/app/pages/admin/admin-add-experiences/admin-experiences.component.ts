@@ -38,6 +38,9 @@ export class AdminExperiencesComponent implements OnInit {
     isEditMode = false;
     currentEditId: number | null = null;
 
+  // Modal
+    isModalOpen = false;
+
   constructor(
     protected formBuilder: FormBuilder,
     protected workExperienceService: WorkExperienceService
@@ -69,6 +72,23 @@ export class AdminExperiencesComponent implements OnInit {
     return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
   }
 
+  openModal(): void {
+    this.isModalOpen = true;
+    this.isSubmitted = false;
+    this.initExperienceForm();
+    this.successMessage = '';
+    this.errorMessage = '';
+    document.body.classList.add('modal-open');
+  }
+  
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.isEditMode = false;
+    this.currentEditId = null;
+    this.errorMessage = '';
+    document.body.classList.remove('modal-open');
+  }
+
   // FORM
 
   initExperienceForm(): void {
@@ -97,7 +117,7 @@ export class AdminExperiencesComponent implements OnInit {
     });
   }
 
-  // EDIT MODE
+  // EDIT
 
   editExperience(experience: WorkExperience): void {
     this.isEditMode = true;
@@ -120,23 +140,19 @@ export class AdminExperiencesComponent implements OnInit {
       description: experience.description
     });
     
-    // Scroll to form for better user experience
-    setTimeout(() => {
-      document.querySelector('.add-experience-container')?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    // Open modal
+    this.isModalOpen = true;
+    document.body.classList.add('modal-open');
   }
   
+  // Update cancelEdit to use closeModal
   cancelEdit(): void {
-    this.isEditMode = false;
-    this.currentEditId = null;
-    this.initExperienceForm();
-    this.successMessage = '';
+    this.closeModal();
   }
 
-  // SUBMISSION
+  // Update onSubmit to close modal on success
   onSubmit(): void {
     this.isSubmitted = true;
-    this.successMessage = '';
     this.errorMessage = '';
 
     // Form group verification
@@ -153,11 +169,7 @@ export class AdminExperiencesComponent implements OnInit {
       this.workExperienceService.update(this.currentEditId, experienceFormData).subscribe({
         next: (response) => {
           this.successMessage = 'Experience successfully updated.';
-          this.ExperienceForm.reset();
-          this.isSubmitted = false;
-          this.isEditMode = false;
-          this.currentEditId = null;
-          this.initExperienceForm();
+          this.closeModal();
           this.loadExperiences();
         },
         error: (error) => {
@@ -170,9 +182,7 @@ export class AdminExperiencesComponent implements OnInit {
       this.workExperienceService.add(experienceFormData).subscribe({
         next: (response) => {
           this.successMessage = 'Experience successfully added.';
-          this.ExperienceForm.reset();
-          this.isSubmitted = false;
-          this.initExperienceForm();
+          this.closeModal();
           this.loadExperiences();
         },
         error: (error) => {

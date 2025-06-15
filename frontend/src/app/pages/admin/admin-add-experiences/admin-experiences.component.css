@@ -1,0 +1,72 @@
+.modal-open {
+    overflow: hidden;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+  }
+  
+  .modal-dialog {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    pointer-events: none;
+  }
+  
+  .modal-content {
+    position: relative;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-radius: 0.3rem;
+    width: 100%; /* Ajouté */
+    pointer-events: auto; /* Restaure les clics sur le contenu */
+    margin: auto;
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+  }
+  
+  .delete-confirmation {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .experience-item {
+    margin-bottom: 1.5rem;
+  }
+  
+  .experience-date {
+    font-size: 0.9rem;
+    color: #666;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .experience-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .experience-description {
+    white-space: pre-line;
+    margin-top: 0.5rem;
+  }
