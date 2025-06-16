@@ -11,6 +11,7 @@ import { AdminDisclaimerComponent } from './pages/admin/admin-disclaimer/admin-d
 import { AdminConfigurationComponent } from './pages/admin/admin-configuration/admin-configuration.component';
 import { AdminExperiencesComponent } from './pages/admin/admin-experiences/admin-experiences.component';
 import { AdminPersonalInfosComponent } from './pages/admin/admin-personal-infos/admin-personal-infos.component';
+import { AdminEducationComponent } from './pages/admin/admin-education/admin-education.component';
 
 export const routes: Routes = [
 
@@ -28,8 +29,9 @@ export const routes: Routes = [
             { path: '', redirectTo: 'disclaimer', pathMatch: 'full'},
             { path: 'disclaimer', component: AdminDisclaimerComponent },
             { path: 'configuration', component: AdminConfigurationComponent },
-            { path: 'add-experiences', component: AdminExperiencesComponent },
-            { path: 'personal-infos', component: AdminPersonalInfosComponent }
+            { path: 'experiences', component: AdminExperiencesComponent },
+            { path: 'personal-infos', component: AdminPersonalInfosComponent },
+            { path: 'educations', component: AdminEducationComponent }
         ] 
     },
 
