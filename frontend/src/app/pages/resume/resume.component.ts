@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WorkExperienceService } from '../../services/work-experience.service';
 import { WorkExperience } from '../../interfaces/work-experience.model'
+import { PersonalInfosService } from '../../services/personal-infos.service';
+import { personalInfos } from '../../interfaces/personal-infos.model';
 
 @Component({
   selector: 'app-resume',
@@ -14,14 +16,32 @@ export class ResumeComponent implements OnInit {
 
   // INIT
   constructor(
-    protected workExperienceService: WorkExperienceService
+    protected workExperienceService: WorkExperienceService,
+    protected personalInfosService: PersonalInfosService
   ) {}
 
   ngOnInit(): void {
     this.loadExperiences();
+    this.loadPersonalInfos();
   }
 
-  // WORK EXPERIENCES DISPLAY
+  // DISPLAY
+
+  personalInfos: personalInfos | null = null;
+
+  loadPersonalInfos(): void {
+    this.personalInfosService.get().subscribe({
+      next: (data) => {
+        if (data && data.length > 0) {
+          this.personalInfos = data[0];
+        }
+      },
+      error: (error) => {
+        console.error('Error loading profile', error);
+      }
+    });
+  }
+
   experiences_list: WorkExperience[] = [];
 
   loadExperiences(): void {

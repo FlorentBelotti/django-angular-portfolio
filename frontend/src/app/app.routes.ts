@@ -9,7 +9,8 @@ import { ResumeComponent } from './pages/resume/resume.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminDisclaimerComponent } from './pages/admin/admin-disclaimer/admin-disclaimer.component';
 import { AdminConfigurationComponent } from './pages/admin/admin-configuration/admin-configuration.component';
-import { AdminExperiencesComponent } from './pages/admin/admin-add-experiences/admin-experiences.component';
+import { AdminExperiencesComponent } from './pages/admin/admin-experiences/admin-experiences.component';
+import { AdminPersonalInfosComponent } from './pages/admin/admin-personal-infos/admin-personal-infos.component';
 
 export const routes: Routes = [
 
@@ -27,7 +28,8 @@ export const routes: Routes = [
             { path: '', redirectTo: 'disclaimer', pathMatch: 'full'},
             { path: 'disclaimer', component: AdminDisclaimerComponent },
             { path: 'configuration', component: AdminConfigurationComponent },
-            { path: 'add-experiences', component: AdminExperiencesComponent }
+            { path: 'add-experiences', component: AdminExperiencesComponent },
+            { path: 'personal-infos', component: AdminPersonalInfosComponent }
         ] 
     },
 

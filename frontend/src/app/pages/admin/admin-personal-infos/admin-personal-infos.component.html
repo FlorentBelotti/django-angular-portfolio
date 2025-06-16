@@ -1,0 +1,171 @@
+<div class="personal-info-container">
+    <h1>{{ isEditMode ? 'Update' : 'Create' }} Personal Information</h1>
+  
+    <!-- Success message -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  
+    <!-- Error message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Form -->
+    <form [formGroup]="PersonalInfosForm" (ngSubmit)="onSubmit()" class="mt-4">
+      <div class="row">
+        <!-- First Name -->
+        <div class="col-md-6 mb-3">
+          <label for="first_name">First Name *</label>
+          <input 
+            type="text" 
+            id="first_name" 
+            formControlName="first_name" 
+            class="form-control" 
+            [ngClass]="{ 'is-invalid': isSubmitted && PersonalInfosForm.get('first_name')?.errors }"
+          />
+          <div *ngIf="isSubmitted && PersonalInfosForm.get('first_name')?.errors" class="invalid-feedback">
+            First name is required
+          </div>
+        </div>
+  
+        <!-- Last Name -->
+        <div class="col-md-6 mb-3">
+          <label for="last_name">Last Name *</label>
+          <input 
+            type="text" 
+            id="last_name" 
+            formControlName="last_name" 
+            class="form-control" 
+            [ngClass]="{ 'is-invalid': isSubmitted && PersonalInfosForm.get('last_name')?.errors }"
+          />
+          <div *ngIf="isSubmitted && PersonalInfosForm.get('last_name')?.errors" class="invalid-feedback">
+            Last name is required
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            class="form-control" 
+            [ngClass]="{ 'is-invalid': isSubmitted && PersonalInfosForm.get('email')?.errors }"
+          />
+          <div *ngIf="isSubmitted && PersonalInfosForm.get('email')?.errors" class="invalid-feedback">
+            <div *ngIf="PersonalInfosForm.get('email')?.errors?.['required']">Email is required</div>
+            <div *ngIf="PersonalInfosForm.get('email')?.errors?.['email']">Please enter a valid email</div>
+          </div>
+        </div>
+  
+        <!-- Phone -->
+        <div class="col-md-6 mb-3">
+          <label for="phone">Phone</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            formControlName="phone" 
+            class="form-control"
+          />
+        </div>
+      </div>
+  
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title">Professional Title *</label>
+        <input 
+          type="text" 
+          id="title" 
+          formControlName="title" 
+          class="form-control" 
+          [ngClass]="{ 'is-invalid': isSubmitted && PersonalInfosForm.get('title')?.errors }"
+        />
+        <div *ngIf="isSubmitted && PersonalInfosForm.get('title')?.errors" class="invalid-feedback">
+          Professional title is required
+        </div>
+      </div>
+  
+      <!-- Bio -->
+      <div class="mb-3">
+        <label for="bio">Bio *</label>
+        <textarea 
+          id="bio" 
+          formControlName="bio" 
+          class="form-control" 
+          rows="5"
+          [ngClass]="{ 'is-invalid': isSubmitted && PersonalInfosForm.get('bio')?.errors }"
+        ></textarea>
+        <div *ngIf="isSubmitted && PersonalInfosForm.get('bio')?.errors" class="invalid-feedback">
+          Bio is required
+        </div>
+      </div>
+  
+      <div class="row">
+        <!-- Photo -->
+        <div class="col-md-6 mb-3">
+          <label for="photoFile">Profile Photo</label>
+          <input 
+            type="file" 
+            id="photoFile" 
+            (change)="onFileSelected($event)"
+            class="form-control" 
+            accept="image/*"
+          />
+          <small class="form-text text-muted" *ngIf="selectedFile">
+            Selected file: {{ selectedFile.name }}
+          </small>
+          <div *ngIf="imagePreview" class="mt-2">
+            <img [src]="imagePreview" alt="Preview" style="max-height: 100px;">
+          </div>
+        </div>
+  
+        <!-- Driver's License -->
+        <div class="col-md-6 mb-3">
+          <label for="driver_licence">Driver's License</label>
+          <input 
+            type="text" 
+            id="driver_licence" 
+            formControlName="driver_licence" 
+            class="form-control"
+          />
+        </div>
+      </div>
+  
+      <div class="row">
+        <!-- LinkedIn -->
+        <div class="col-md-6 mb-3">
+          <label for="linkedin">LinkedIn URL</label>
+          <input 
+            type="url" 
+            id="linkedin" 
+            formControlName="linkedin" 
+            class="form-control"
+            placeholder="https://linkedin.com/in/yourprofile"
+          />
+        </div>
+  
+        <!-- GitHub -->
+        <div class="col-md-6 mb-3">
+          <label for="github">GitHub URL</label>
+          <input 
+            type="url" 
+            id="github" 
+            formControlName="github" 
+            class="form-control"
+            placeholder="https://github.com/yourusername"
+          />
+        </div>
+      </div>
+  
+      <!-- Submit button -->
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+        <button type="submit" class="btn btn-primary">
+          {{ isEditMode ? 'Update' : 'Create' }} Profile
+        </button>
+      </div>
+    </form>
+  </div>

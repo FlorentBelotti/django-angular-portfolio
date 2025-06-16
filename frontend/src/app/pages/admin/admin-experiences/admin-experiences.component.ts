@@ -125,11 +125,10 @@ export class AdminExperiencesComponent implements OnInit {
     this.successMessage = '';
     this.errorMessage = '';
     
-    // Format date strings for the date input (YYYY-MM-DD)
     const startDate = experience.start_date ? new Date(experience.start_date).toISOString().split('T')[0] : '';
     const endDate = experience.end_date ? new Date(experience.end_date).toISOString().split('T')[0] : '';
     
-    // Populate form with existing data
+    // Populate form
     this.ExperienceForm.patchValue({
       company: experience.company,
       position: experience.position,
@@ -140,17 +139,14 @@ export class AdminExperiencesComponent implements OnInit {
       description: experience.description
     });
     
-    // Open modal
     this.isModalOpen = true;
     document.body.classList.add('modal-open');
   }
   
-  // Update cancelEdit to use closeModal
   cancelEdit(): void {
     this.closeModal();
   }
 
-  // Update onSubmit to close modal on success
   onSubmit(): void {
     this.isSubmitted = true;
     this.errorMessage = '';

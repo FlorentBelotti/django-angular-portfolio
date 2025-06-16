@@ -1,5 +1,27 @@
+<div class="personal-infos-display">
+  
+  <h1> My profile </h1>
+
+  <div *ngIf="!personalInfos" class="alert alert-info">
+    No profile yet.
+  </div>
+
+  <div *ngIf="personalInfos" class="profile">
+    <h2 class="names">
+      {{ personalInfos.first_name }} {{ personalInfos.last_name }}
+    </h2>
+    <h3 class="title">{{ personalInfos.title }}</h3>
+    <div class="contact-info" *ngIf="personalInfos.email || personalInfos.phone">
+      <div *ngIf="personalInfos.email">Email: {{ personalInfos.email }}</div>
+      <div *ngIf="personalInfos.phone">Phone: {{ personalInfos.phone }}</div>
+    </div>
+    <p class="bio">{{ personalInfos.bio }}</p>
+  </div>
+</div>
+
 <div class="experiences-display">
-    <h1> Professional experiences</h1>
+    
+  <h1> Professional experiences</h1>
 
     <div *ngIf="experiences_list.length === 0" class="alert alert-info">
         No professional experiences added yet.
