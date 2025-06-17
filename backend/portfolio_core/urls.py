@@ -14,8 +14,7 @@ urlpatterns = [
 
     # APPs
     path('api/resume/', include('resume.urls')),
-    path('api/school-projects/', include('school_projects.urls')),
-    path('api/side-projects/', include('side_projects.urls')),
+    path('api/projects/', include('school_projects.urls')),
     path('api/testimonials/', include('testimonials.urls')),
 
     # DRF
