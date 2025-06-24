@@ -1,7 +1,20 @@
 from django.contrib import admin
-from .models import SchoolProject
+from .models import Project, ProjectImage
 
-@admin.register(SchoolProject)
-class SchoolProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'technologies', 'date_completed')
+class ProjectImageInline(admin.TabularInline):
+    model = ProjectImage
+    extra = 1
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    # Modifier 'date_completed' en 'date' pour correspondre à votre modèle
+    list_display = ('title', 'type', 'date', 'technologies')
+    list_filter = ('type',)
     search_fields = ('title', 'description', 'technologies')
+    inlines = [ProjectImageInline]
+
+@admin.register(ProjectImage)
+class ProjectImageAdmin(admin.ModelAdmin):
+    list_display = ('project', 'description', 'order')
+    list_filter = ('project',)
+    search_fields = ('description', 'project__title')

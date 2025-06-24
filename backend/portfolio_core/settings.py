@@ -46,8 +46,7 @@ INSTALLED_APPS = [
     
     # APP
     'resume',
-    'school_projects',
-    'side_projects',
+    'projects',
     'testimonials',
 ]
 
