@@ -13,6 +13,9 @@ import { AdminExperiencesComponent } from './pages/admin/admin-experiences/admin
 import { AdminPersonalInfosComponent } from './pages/admin/admin-personal-infos/admin-personal-infos.component';
 import { AdminEducationComponent } from './pages/admin/admin-education/admin-education.component';
 import { AdminProjectsComponent } from './pages/admin/admin-projects/admin-projects.component';
+import { SchoolProjectsComponent } from './pages/projects/school-projects/school-projects.component';
+import { ProfessionalProjectsComponent } from './pages/projects/professional-projects/professional-projects.component';
+import { SideProjectsComponent } from './pages/projects/side-projects/side-projects.component';
 
 export const routes: Routes = [
 
@@ -21,6 +24,9 @@ export const routes: Routes = [
 
     // App routes
     { path: 'resume', component: ResumeComponent },
+    { path: 'side-projects', component: SideProjectsComponent },
+    { path: 'school-projects', component: SchoolProjectsComponent },
+    { path: 'professional-projects', component: ProfessionalProjectsComponent },
 
     // Admin route
     {

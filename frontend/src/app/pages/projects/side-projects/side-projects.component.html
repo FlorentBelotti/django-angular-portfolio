@@ -1,0 +1,51 @@
+<div class="side-projects-display">
+  
+  <h1>My Side Projects</h1>
+
+  <div *ngIf="sideProjects.length === 0" class="alert alert-info">
+    No side projects added yet.
+  </div>
+
+  <div class="projects-list">
+    <div *ngFor="let project of sideProjects" class="project-item">
+      <div class="project-header">
+        <div class="project-meta">
+          <span class="project-date badge bg-secondary">{{ formatDate(project.date) }}</span>
+          <span class="project-type badge bg-info ms-2">{{ project.type }}</span>
+        </div>
+        <h2 class="project-title">{{ project.title }}</h2>
+        <p class="project-technologies"><strong>Technologies:</strong> {{ project.technologies }}</p>
+      </div>
+      
+      <div class="project-content">
+        <p class="project-description">{{ project.description }}</p>
+        
+        <!-- Links -->
+        <div class="project-links mb-3" *ngIf="project.github_link || project.demo_link">
+          <a *ngIf="project.github_link" [href]="project.github_link" target="_blank" class="btn btn-outline-dark me-2">
+            <i class="bi bi-github"></i> View Code
+          </a>
+          <a *ngIf="project.demo_link" [href]="project.demo_link" target="_blank" class="btn btn-outline-primary">
+            <i class="bi bi-eye"></i> Live Demo
+          </a>
+        </div>
+        
+        <!-- Images -->
+        <div *ngIf="project.images && project.images.length > 0" class="project-images">
+          <div class="row">
+            <div class="col-md-4 mb-3" *ngFor="let image of project.images">
+              <div class="image-container">
+                <img [src]="image.image_url || image.image" 
+                     [alt]="image.description || project.title" 
+                     class="img-fluid rounded shadow-sm project-image">
+                <p *ngIf="image.description" class="image-caption mt-2 text-muted small">{{ image.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <hr class="project-divider">
+    </div>
+  </div>
+</div>
