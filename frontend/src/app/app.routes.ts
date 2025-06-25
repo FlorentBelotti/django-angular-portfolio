@@ -12,6 +12,7 @@ import { AdminConfigurationComponent } from './pages/admin/admin-configuration/a
 import { AdminExperiencesComponent } from './pages/admin/admin-experiences/admin-experiences.component';
 import { AdminPersonalInfosComponent } from './pages/admin/admin-personal-infos/admin-personal-infos.component';
 import { AdminEducationComponent } from './pages/admin/admin-education/admin-education.component';
+import { AdminProjectsComponent } from './pages/admin/admin-projects/admin-projects.component';
 
 export const routes: Routes = [
 
@@ -31,7 +32,8 @@ export const routes: Routes = [
             { path: 'configuration', component: AdminConfigurationComponent },
             { path: 'experiences', component: AdminExperiencesComponent },
             { path: 'personal-infos', component: AdminPersonalInfosComponent },
-            { path: 'educations', component: AdminEducationComponent }
+            { path: 'educations', component: AdminEducationComponent },
+            { path: 'projects', component: AdminProjectsComponent }
         ] 
     },
 

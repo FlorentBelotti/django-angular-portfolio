@@ -7,7 +7,6 @@ class ProjectImageInline(admin.TabularInline):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    # Modifier 'date_completed' en 'date' pour correspondre à votre modèle
     list_display = ['title', 'type', 'date', 'technologies']
     list_filter = ['type', 'date']
     search_fields = ['title', 'description', 'technologies']

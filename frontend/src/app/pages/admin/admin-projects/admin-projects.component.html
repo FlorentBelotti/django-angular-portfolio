@@ -1,0 +1,277 @@
+<div class="add-project-container">
+  <h1>{{ isEditMode ? 'Edit' : 'Add' }} a project</h1>
+  
+  <div class="mb-4">
+    <button class="btn btn-primary" (click)="openModal()">
+      <i class="bi bi-plus-circle"></i> Add New Project
+    </button>
+  </div>
+
+  <!-- Success -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" [class.show]="isModalOpen" [style.display]="isModalOpen ? 'block' : 'none'" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModalLabel">{{ isEditMode ? 'Edit' : 'Add' }} Project</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Form -->
+          <form [formGroup]="ProjectForm" (ngSubmit)="onSubmit()">
+            <!-- Type -->
+            <div class="form-group mb-3">
+              <label for="type">Project Type *</label>
+              <select 
+                id="type" 
+                formControlName="type" 
+                class="form-control" 
+                [ngClass]="{ 'is-invalid': isSubmitted && ProjectForm.get('type')?.errors }"
+              >
+                <option value="">Select a type</option>
+                <option value="school">School Project</option>
+                <option value="side">Side Project</option>
+                <option value="professional">Professional Project</option>
+              </select>
+              <div *ngIf="isSubmitted && ProjectForm.get('type')?.errors" class="invalid-feedback">
+                Project type is required
+              </div>
+            </div>
+            
+            <!-- Title -->
+            <div class="form-group mb-3">
+              <label for="title">Title *</label>
+              <input 
+                type="text" 
+                id="title" 
+                formControlName="title" 
+                class="form-control" 
+                [ngClass]="{ 'is-invalid': isSubmitted && ProjectForm.get('title')?.errors }" 
+              />
+              <div *ngIf="isSubmitted && ProjectForm.get('title')?.errors" class="invalid-feedback">
+                Title is required
+              </div>
+            </div>
+            
+            <!-- Description -->
+            <div class="form-group mb-3">
+              <label for="description">Description *</label>
+              <textarea 
+                id="description" 
+                formControlName="description" 
+                class="form-control" 
+                rows="4"
+                [ngClass]="{ 'is-invalid': isSubmitted && ProjectForm.get('description')?.errors }"
+              ></textarea>
+              <div *ngIf="isSubmitted && ProjectForm.get('description')?.errors" class="invalid-feedback">
+                Description is required
+              </div>
+            </div>
+            
+            <!-- Date -->
+            <div class="form-group mb-3">
+              <label for="date">Date *</label>
+              <input 
+                type="date" 
+                id="date" 
+                formControlName="date" 
+                class="form-control" 
+                [ngClass]="{ 'is-invalid': isSubmitted && ProjectForm.get('date')?.errors }" 
+              />
+              <div *ngIf="isSubmitted && ProjectForm.get('date')?.errors" class="invalid-feedback">
+                Date is required
+              </div>
+            </div>
+            
+            <!-- Technologies -->
+            <div class="form-group mb-3">
+              <label for="technologies">Technologies *</label>
+              <input 
+                type="text" 
+                id="technologies" 
+                formControlName="technologies" 
+                class="form-control" 
+                placeholder="e.g., Angular, Django, Python"
+                [ngClass]="{ 'is-invalid': isSubmitted && ProjectForm.get('technologies')?.errors }" 
+              />
+              <div *ngIf="isSubmitted && ProjectForm.get('technologies')?.errors" class="invalid-feedback">
+                Technologies are required
+              </div>
+            </div>
+            
+            <!-- GitHub Link -->
+            <div class="form-group mb-3">
+              <label for="github_link">GitHub Link</label>
+              <input 
+                type="url" 
+                id="github_link" 
+                formControlName="github_link" 
+                class="form-control" 
+                placeholder="https://github.com/username/repo"
+              />
+            </div>
+            
+            <!-- Demo Link -->
+            <div class="form-group mb-3">
+              <label for="demo_link">Demo Link</label>
+              <input 
+                type="url" 
+                id="demo_link" 
+                formControlName="demo_link" 
+                class="form-control" 
+                placeholder="https://your-demo.com"
+              />
+            </div>
+            
+            <!-- School Name (conditional) -->
+            <div class="form-group mb-3" *ngIf="ProjectForm.get('type')?.value === 'school'">
+              <label for="school_name">School Name</label>
+              <input 
+                type="text" 
+                id="school_name" 
+                formControlName="school_name" 
+                class="form-control"
+              />
+            </div>
+            
+            <!-- Company Name (conditional) -->
+            <div class="form-group mb-3" *ngIf="ProjectForm.get('type')?.value === 'professional'">
+              <label for="company_name">Company Name</label>
+              <input 
+                type="text" 
+                id="company_name" 
+                formControlName="company_name" 
+                class="form-control"
+              />
+            </div>
+            
+            <!-- Images -->
+            <div class="form-group mb-3">
+              <label for="images">Project Images</label>
+              <input 
+                type="file" 
+                id="images" 
+                class="form-control" 
+                multiple 
+                accept="image/*"
+                (change)="onImageSelect($event)"
+              />
+              <small class="form-text text-muted">You can select multiple images</small>
+            </div>
+            
+            <!-- Image previews -->
+            <div *ngIf="imagePreviewUrls.length > 0" class="image-preview-container mb-3">
+              <h6>Selected Images:</h6>
+              <div class="row">
+                <div class="col-md-3 mb-2" *ngFor="let preview of imagePreviewUrls; let i = index">
+                  <div class="image-preview-item">
+                    <img [src]="preview" class="img-thumbnail" style="width: 100%; height: 120px; object-fit: cover;">
+                    <button type="button" class="btn btn-sm btn-danger mt-1" (click)="removeImage(i)">
+                      <i class="bi bi-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">{{ isEditMode ? 'Update' : 'Save' }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal backdrop -->
+  <div class="modal-backdrop fade show" *ngIf="isModalOpen"></div>
+
+  <!-- Projects List -->
+  <div class="show-projects-list">
+    <h2>List of your projects</h2>
+    
+    <div *ngIf="projects_list.length === 0" class="alert alert-info">
+      No projects added yet.
+    </div>
+    
+    <div class="projects-list">
+      <div *ngFor="let project of projects_list" class="project-item mb-4">
+        <div class="project-header d-flex justify-content-between align-items-start">
+          <div>
+            <span class="project-date badge bg-secondary">{{ formatDate(project.date) }}</span>
+            <span class="project-type badge bg-primary ms-2">{{ project.type }}</span>
+            <h3 class="project-title mt-2">{{ project.title }}</h3>
+          </div>
+          
+          <!-- Action buttons -->
+          <div class="project-actions">
+            <!-- Edit button -->
+            <button 
+              class="btn btn-sm btn-outline-primary me-2" 
+              (click)="editProject(project)"
+              [disabled]="isEditMode && currentEditId !== project.id"
+            >
+              <i class="bi bi-pencil"></i> Edit
+            </button>
+            
+            <!-- Delete button -->
+            <button 
+              *ngIf="deleteConfirmationId !== project.id" 
+              class="btn btn-sm btn-outline-danger" 
+              (click)="confirmDelete(project.id)"
+              [disabled]="isEditMode && currentEditId === project.id"
+            >
+              <i class="bi bi-trash"></i> Delete
+            </button>
+            
+            <!-- Delete confirmation -->
+            <div *ngIf="deleteConfirmationId === project.id" class="delete-confirmation">
+              <span class="me-2">Are you sure?</span>
+              <button class="btn btn-sm btn-danger me-1" (click)="deleteProject(project.id)">Yes</button>
+              <button class="btn btn-sm btn-secondary" (click)="cancelDelete()">No</button>
+            </div>
+          </div>
+        </div>
+        
+        <p class="project-description">{{ project.description }}</p>
+        <p class="project-technologies"><strong>Technologies:</strong> {{ project.technologies }}</p>
+        
+        <!-- Links -->
+        <div class="project-links mb-2" *ngIf="project.github_link || project.demo_link">
+          <a *ngIf="project.github_link" [href]="project.github_link" target="_blank" class="btn btn-sm btn-outline-dark me-2">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+          <a *ngIf="project.demo_link" [href]="project.demo_link" target="_blank" class="btn btn-sm btn-outline-info">
+            <i class="bi bi-eye"></i> Demo
+          </a>
+        </div>
+        
+        <!-- Images -->
+        <div *ngIf="project.images && project.images.length > 0" class="project-images">
+          <h6>Images:</h6>
+          <div class="row">
+            <div class="col-md-2 mb-2" *ngFor="let image of project.images">
+              <div class="image-item">
+                <img [src]="image.image_url || image.image" class="img-thumbnail" style="width: 100%; height: 80px; object-fit: cover;">
+                <button class="btn btn-sm btn-danger mt-1" (click)="deleteProjectImage(image.id, project.id)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

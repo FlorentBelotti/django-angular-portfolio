@@ -3,9 +3,9 @@ from rest_framework.routers import DefaultRouter
 from .views import ProjectViewSet, ProjectImageViewSet
 
 router = DefaultRouter()
-router.register(r'projects', ProjectViewSet)
-router.register(r'project-images', ProjectImageViewSet)
+router.register('projects', ProjectViewSet)
+router.register('project-images', ProjectImageViewSet)
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
 ]
