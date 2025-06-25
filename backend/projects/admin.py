@@ -8,13 +8,12 @@ class ProjectImageInline(admin.TabularInline):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     # Modifier 'date_completed' en 'date' pour correspondre à votre modèle
-    list_display = ('title', 'type', 'date', 'technologies')
-    list_filter = ('type',)
-    search_fields = ('title', 'description', 'technologies')
+    list_display = ['title', 'type', 'date', 'technologies']
+    list_filter = ['type', 'date']
+    search_fields = ['title', 'description', 'technologies']
     inlines = [ProjectImageInline]
 
 @admin.register(ProjectImage)
 class ProjectImageAdmin(admin.ModelAdmin):
-    list_display = ('project', 'description', 'order')
-    list_filter = ('project',)
-    search_fields = ('description', 'project__title')
+    list_display = ['project', 'description', 'order']
+    search_fields = ['project']
