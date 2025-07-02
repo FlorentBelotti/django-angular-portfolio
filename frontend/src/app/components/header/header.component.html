@@ -1,17 +1,18 @@
 <header class="header">
-    
-    <div class="logo">
-        <a routerLink="/"> PORTFOLIO </a>
-
+  
+    <div class="header-left">
+        <img src="assets/images/JesseDraxler.jpg" alt="Logo" class="header-image">
     </div>
-    
-    <nav class="navigation-buttons">
-        <button><a routerLink="/" routerLinkActive="active"> Home </a> </button>
-        <button><a routerLink="/resume/" routerLinkActive="active"> My resume </a> </button>
-        <button><a routerLink="/school-projects/" routerLinkActive="active"> School projects </a> </button>
-        <button><a routerLink="/side-projects/" routerLinkActive="active"> Side projects </a> </button>
-        <button><a routerLink="/professional-projects/" routerLinkActive="active"> Professional projects </a> </button>
-        <button><a routerLink="/admin/" routerLinkActive="active"> Configuration </a> </button>
-    </nav>
 
+    <div class="header-right">
+        <h1 class="header-title" routerLink="/" routerLinkActive="active">WORKS</h1>
+        <nav class="navigation-buttons">
+            <!-- <button><a routerLink="/" routerLinkActive="active"> Home </a></button> -->
+            <button><a routerLink="/resume/" routerLinkActive="active"> About </a></button>
+            <button><a routerLink="/school-projects/" routerLinkActive="active"> Works </a></button>
+            <!-- <button><a routerLink="/side-projects/" routerLinkActive="active"> Side projects </a></button>
+            <button><a routerLink="/professional-projects/" routerLinkActive="active"> Professional projects </a></button> -->
+            <button><a routerLink="/admin/" routerLinkActive="active"> Login </a></button>
+        </nav>
+    </div>
 </header>
