@@ -7,13 +7,27 @@
   justify-content: space-between; /* Répartit gauche et droite */
   align-items: flex-start; /* Aligne en haut */
   width: 100%;
-  padding: 2rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   box-sizing: border-box;
 }
 
+/* HEADER LEFT BLOCK */
+
 .header-left {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
   align-items: flex-start;
+}
+
+.header-image-block {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 .header-image {
@@ -21,16 +35,182 @@
   height: 250px;
   object-fit: cover; /* Maintient les proportions et remplit le carré */
   border: 1px solid black;
+  opacity: 1;
 }
+
+.image-description {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+.deco-block {
+  display: flex;
+  width:fit-content;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.deco-line {
+  width: 200px;
+  height: 1px;
+  background-color: black;
+}
+
+.quote-1 {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+}
+
+.state-block {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  border: solid black 1px;
+  align-items: center;
+}
+
+.barcode {
+  font-family: var(--font-barcode);
+  font-size: 50px;
+  padding: 10px;
+}
+
+.state-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.state-title {
+  font-family: var(--font-special);
+  font-size:16px;
+  font-weight: bold;
+}
+
+.state {
+  font-size: 14px;
+}
+
+.enigma-block {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+/* 
+.cowboy-quote {
+  font-display: block;
+} */
+
+.header-cross {
+  width: 70px; /* Ajustez la taille selon vos besoins */
+  height: 70px;
+  object-fit: cover;
+  background-color: rgba(217, 217, 217, 1);
+  opacity: 0.5;
+  box-shadow: 1;
+}
+
+.e-button {
+  padding-left: 50px;
+  width: 30px;
+  height: 30px;
+  gap: 3rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.e-button img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Bouton 1 - Tremblement */
+.e-button-1:hover {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, -2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, 2px); }
+}
+
+/* Bouton 2 - Grossissement */
+.e-button-2:hover {
+  transform: scale(1.3);
+}
+
+/* Bouton 3 - Tremblement gauche/droite */
+.e-button-3:hover {
+  animation: horizontal-shake 0.3s infinite;
+}
+
+@keyframes horizontal-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Bouton 4 - Rotation */
+.e-button-4:hover {
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* HEADER RIGHT BLOCK */
 
 .header-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: auto; /* Changé de 620px à auto */
+  flex-grow: 1; /* Permet de prendre tout l'espace restant */
+  min-width: 0; /* Permet la compression si nécessaire */
+}
+
+.music-player {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.music-play-placeholder {
+  width: 30px;
+  height: 30px;
+  background-color: black;
+}
+
+.music-pause-placeholder {
+  width: 30px;
+  height: 30px;
+  background-color: black;
+}
+
+.music-title-placeholder {
+  width: fill;
+  height: 30px;
+  background-color: black;
+  flex-grow: 1;
 }
 
 .header-title {
-  font-family: 'Alumni Sans Pinstripe', sans-serif;
+  font-family: var(--font-title);
+  display: flex;
   font-size: 128px;
   color: black;
   margin: 0;
@@ -38,6 +218,8 @@
   line-height: 1;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  overflow: visible; /* Permet au texte de dépasser si nécessaire */
 }
 
 .header-title:hover {
@@ -59,7 +241,7 @@
 }
 
 .navigation-buttons button a {
-  font-family: 'Jacquard 12', serif;
+  font-family: var(--font-navigation);
   font-size: 36px;
   color: black;
   text-decoration: none;
@@ -67,12 +249,10 @@
   transition: all 0.3s ease;
 }
 
-/* Effet gras au survol pour les boutons non-actifs */
 .navigation-buttons button a:hover:not(.active) {
   font-weight: bold;
 }
 
-/* Effet de flou pour le bouton actif */
 .navigation-buttons button a.active {
   filter: blur(2px);
   opacity: 0.6;

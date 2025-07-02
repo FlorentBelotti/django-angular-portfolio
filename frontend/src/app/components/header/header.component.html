@@ -1,17 +1,63 @@
 <header class="header">
   
+    <!-- <app-animated-background></app-animated-background> -->
+
     <div class="header-left">
-        <img src="assets/images/JesseDraxler.jpg" alt="Logo" class="header-image">
+        <div class="header-image-block">
+            <div class="image-description"> Art from Jesse Draxler</div>
+            <img src="assets/images/JesseDraxler.jpg" alt="Logo" class="header-image">
+        </div>
+        <div class=deco-block>
+            <div class="deco-line"></div>
+            <div class="deco-line"></div>
+            <div class="quote-1">
+                <div class="part-1">
+                    WHAT CRUEL IRONY IT IS /<br>THAT WE CAN CHOOSE /
+                </div>
+                <div class="part-2">
+                    TO CONTROL OUR THOUGHTS<br>BUT NOT OUR FEELINGS
+                </div>
+            </div>
+            <div class="state-block">
+                <div class="barcode"> 24601 </div>
+                <div class="state-display"> 
+                    <div class="state-title"> CURRENTLY WORKING ON...</div>
+                    <div class="state"> My portfolio</div>
+                </div>
+            </div>
+            <div class="enigma-block">
+                <div class="cowboy-quote">
+                    YOU'RE<br>
+                    GONNA<br>
+                    CARRY<br>
+                    THAT<br>
+                    WEIGHT
+                </div>
+                <img src="assets/icons/x-24.svg" alt="header-cross" class="header-cross">
+                <div class="e-button">
+                    <img src="assets/icons/circle-dot-icon.svg" class="e-button-1">
+                    <img src="assets/icons/circle-icon.svg" class="e-button-2">                   
+                    <img src="assets/icons/circle-stop-icon.svg" class="e-button-3">                   
+                    <img src="assets/icons/circle-line-icon.svg" class="e-button-4">                   
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="header-right">
-        <h1 class="header-title" routerLink="/" routerLinkActive="active">WORKS</h1>
+        <div class="music-player"> 
+            <div class="music-play-placeholder"> </div>
+            <div class="music-pause-placeholder"> </div>
+            <div class="music-title-placeholder"> </div>
+        </div>
+        <h1 class="header-title" routerLink="/" routerLinkActive="active">FLORENT BELOTTI</h1>
         <nav class="navigation-buttons">
             <!-- <button><a routerLink="/" routerLinkActive="active"> Home </a></button> -->
             <button><a routerLink="/resume/" routerLinkActive="active"> About </a></button>
             <button><a routerLink="/school-projects/" routerLinkActive="active"> Works </a></button>
             <!-- <button><a routerLink="/side-projects/" routerLinkActive="active"> Side projects </a></button>
             <button><a routerLink="/professional-projects/" routerLinkActive="active"> Professional projects </a></button> -->
+            <button><a routerLink="/resume" routerLinkActive="active"> Contact </a></button>
             <button><a routerLink="/admin/" routerLinkActive="active"> Login </a></button>
         </nav>
     </div>

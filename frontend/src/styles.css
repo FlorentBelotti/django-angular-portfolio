@@ -1,7 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+/* Imports centralisés des polices */
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital,wght@0,400;1,400&family=Jacquard+12&family=IBM+Plex+Mono:wght@300;400;500;700&family=Bitter:wght@300;400;500;700&family=Libre+Barcode+128+Text&display=swap');
+
+/* Variables CSS globales pour les polices */
+:root {
+  --font-title: 'Alumni Sans Pinstripe', sans-serif;
+  --font-navigation: 'Jacquard 12', serif;
+  --font-normal: 'IBM Plex Mono', monospace;
+  --font-special: 'Bitter', serif;
+  --font-barcode: 'Libre Barcode 128 Text', cursive;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: #c0c0c0;
   min-height: 100;
+  font-family: var(--font-normal);
+  font-size: 12px;
+  color: black;
 }
