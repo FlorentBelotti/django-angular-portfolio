@@ -1,4 +1,5 @@
 <header class="header">
+<div class="header-content">
   
     <!-- <app-animated-background></app-animated-background> -->
 
@@ -50,15 +51,25 @@
             <div class="music-pause-placeholder"> </div>
             <div class="music-title-placeholder"> </div>
         </div>
-        <h1 class="header-title" routerLink="/" routerLinkActive="active">FLORENT BELOTTI</h1>
+        <h1 class="glitch-auto" 
+            routerLink="/" 
+            data-text="FLORENT BELOTTI"
+            routerLinkActive="active">
+            FLORENT BELOTTI
+        </h1>
         <nav class="navigation-buttons">
-            <!-- <button><a routerLink="/" routerLinkActive="active"> Home </a></button> -->
-            <button><a routerLink="/resume/" routerLinkActive="active"> About </a></button>
-            <button><a routerLink="/school-projects/" routerLinkActive="active"> Works </a></button>
-            <!-- <button><a routerLink="/side-projects/" routerLinkActive="active"> Side projects </a></button>
-            <button><a routerLink="/professional-projects/" routerLinkActive="active"> Professional projects </a></button> -->
-            <button><a routerLink="/resume" routerLinkActive="active"> Contact </a></button>
-            <button><a routerLink="/admin/" routerLinkActive="active"> Login </a></button>
+            <button><a routerLink="/resume/" routerLinkActive="active" class="glitch-effect" data-text="About"> About </a></button>
+            <button><a routerLink="/school-projects/" routerLinkActive="active" class="glitch-effect" data-text="Works"> Works </a></button>
+            <button><a routerLink="/resume" routerLinkActive="active" class="glitch-effect" data-text="Contact"> Contact </a></button>
+            <button><a routerLink="/admin/" routerLinkActive="active" class="glitch-effect" data-text="Login"> Login </a></button>
         </nav>
     </div>
+
+</div>
+
+<div class="separator">
+    <div class="separator-losange"></div>
+    <div class="separator-line"></div>
+    <div class="separator-losange"></div>
+</div>
 </header>
