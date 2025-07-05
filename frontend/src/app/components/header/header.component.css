@@ -119,15 +119,17 @@
 .header-cross {
   width: 80px; /* Ajustez la taille selon vos besoins */
   height: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
   object-fit: cover;
   /* background-color: rgba(217, 217, 217, 1); */
   color: #000;
-  /* opacity: 0.5; */
+  opacity: 0.9;
   /* box-shadow: 1; */
 }
 
 .e-button {
-  padding-left: 45px;
+  /* padding-left: 45px; */
   width: 30px;
   height: 30px;
   gap: 3rem;
@@ -224,7 +226,7 @@
 .glitch-auto {
   font-family: var(--font-title);
   display: flex;
-  font-size: 80px;
+  font-size: 90px;
   color: black;
   margin: 0;
   /* margin-bottom: 1rem; */
