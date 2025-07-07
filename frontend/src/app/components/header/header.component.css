@@ -34,14 +34,37 @@
 .header-image-block {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+}
+
+.header-image-block:hover {
+  transform: translateY(-8px); /* Lève le bloc de 8px */
+  animation: float-continuous 5s ease-in-out infinite; /* Animation flottante continue */
+}
+
+@keyframes float-continuous {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(2px, -8px);
+  }
+  50% {
+    transform: translate(-3px, -5px);
+  }
+  75% {
+    transform: translate(1px, -10px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
 }
 
 .header-image {
   width: 190px; /* Ajustez la taille selon vos besoins */
   height: 190px;
   object-fit: cover; /* Maintient les proportions et remplit le carré */
-  border: 1px solid black;
   opacity: 1;
 }
 
@@ -50,7 +73,7 @@
   text-orientation: mixed;
   transform: rotate(180deg);
   font-size: 12px;
-  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .deco-block {
@@ -174,7 +197,7 @@
 
 /* Bouton 4 - Rotation */
 .e-button-4:hover {
-  animation: rotate 1s infinite linear;
+  animation: rotate 3s infinite linear;
 }
 
 @keyframes rotate {

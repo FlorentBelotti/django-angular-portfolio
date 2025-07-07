@@ -25,7 +25,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #b4b4b4;
+  background-color: #fff;
   min-height: 100;
   font-family: var(--font-normal);
   font-size: 12px;
@@ -142,35 +142,35 @@ body {
   81% {
     opacity: 1;
     clip-path: var(--glitch-clip-one);
-    transform: translate(-15px, 0);
+    transform: translate(-15px, 0) skewX(20deg);
   }
   82% {
     clip-path: var(--glitch-clip-two);
-    transform: translate(18px, 2px);
+    transform: translate(18px, 2px) skewX(-15deg);
   }
   83% {
     clip-path: var(--glitch-clip-three);
-    transform: translate(-12px, -2px);
+    transform: translate(-12px, -2px) skewX(25deg);
   }
   84% {
     clip-path: var(--glitch-clip-one);
-    transform: translate(20px, 1px);
+    transform: translate(20px, 1px) skewX(-10deg);
   }
   85% {
     clip-path: var(--glitch-clip-two);
-    transform: translate(-16px, 0);
+    transform: translate(-16px, 0) skewX(30deg);
   }
   86% {
     clip-path: var(--glitch-clip-four);
-    transform: translate(14px, -1px);
+    transform: translate(14px, -1px) skewX(-5deg);
   }
   87% {
     clip-path: var(--glitch-clip-three);
-    transform: translate(-22px, 2px);
+    transform: translate(-22px, 2px) skewX(40deg);
   }
   88%, 100% {
     opacity: 0;
     clip-path: var(--glitch-clip-four);
-    transform: translate(0, 0);
+    transform: translate(0, 0) skewX(0deg);
   }
 }
