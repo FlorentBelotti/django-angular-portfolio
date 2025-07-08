@@ -1,17 +1,21 @@
 .home-container {
     display:flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     height: 100%;
     width: 100%;
     padding-top: 2rem;
+    gap:2rem;
 }
 
 .about-me-title {
     display: flex;
     width: fit-content;
     flex-direction: row;
-    width: 1500px;
-    max-height: 160px;
+    margin-left: 12%;
+    /* width: 1500px; */
+    /* max-height: 160px; */
 }
 
 .about-me-title-part-1 {
@@ -79,4 +83,32 @@
 
 .banner:hover .banner-content {
     animation-play-state: paused;
+}
+
+.home-bottom {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    /* justify-content: end;
+    align-items: flex-end; */
+    flex-direction: row;
+}
+
+.bio {
+    font-family: var(--font-special);
+    font-size: 22px;
+    width: 35%;
+    margin-left: 8%;
+    text-align: left;
+    align-items: flex-start;
+    z-index: 1;
+}
+
+.knight-image {
+    position: fixed;
+    right: 2vw;
+    bottom: 0;
+    width: 40%;
+    height: 80%;
+    z-index: 2;
 }

@@ -1,14 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PersonalInfosService } from '../../services/personal-infos.service';
+import { personalInfos } from '../../interfaces/personal-infos.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  
+export class HomeComponent implements OnInit {
+
+  bio: string | null = null;
+
+  constructor(private personalInfosService: PersonalInfosService) {}
+
+  ngOnInit(): void {
+    this.personalInfosService.get().subscribe({
+      next: (data) => {
+        if (data && data.length > 0) {
+          this.bio = data[0].bio;
+        }
+      },
+      error: (error) => {
+        console.error('Error loading bio', error);
+      }
+    });
+  }
+
   getCurrentDate(): string {
     return new Date().toISOString().split('T')[0].replace(/-/g, '.');
   }
