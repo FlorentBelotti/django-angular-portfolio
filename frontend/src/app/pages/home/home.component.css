@@ -1,167 +1,82 @@
 .home-container {
+    display:flex;
     justify-content: center;
-    /* height: 100%; */
-    /* width: 100%; */
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-}
-
-.knight-image {
-    position: absolute;
-    bottom: 20px; /* Distance du bas */
-    right: 20px; /* Distance de la droite */
-    width: auto; /* Garde les proportions */
-    height: 700px; /* Hauteur réduite, ajustez selon vos besoins */
-    object-fit: contain; /* Garde les proportions sans déformation */
-    z-index: 10; /* S'assure qu'elle reste au-dessus des autres éléments */
-}
-
-/* CARTES VERTICALES */
-.card-container {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    align-items: flex-start;
-    padding: 0 2rem;
-}
-
-.card-background {
-    width: 250px; /* Largeur réduite */
-    height: 400px; /* Hauteur augmentée */
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid #000;
-}
-
-.card-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgb(225, 225, 225);
-    opacity: 0.3;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.card-background:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.card-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column; /* Changé en colonne */
-    gap: 1.5rem;
-    align-items: center; /* Centré horizontalement */
-    padding: 2rem 1rem;
     height: 100%;
-    justify-content: space-between; /* Répartit l'espace */
-}
-
-.card-image-block {
-    display: flex;
-    flex-direction: column; /* Changé en colonne */
-    align-items: center;
-}
-
-.card-description {
-    writing-mode: horizontal-tb; /* Texte horizontal */
-    text-orientation: mixed;
-    transform: none; /* Pas de rotation */
-    font-size: 10px;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.card-visual {
-    width: 120px; /* Plus grand */
-    height: 120px; /* Plus grand */
-    background-color: #cecece;
-    border: 1px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-}
-
-.card-info-block {
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.card-line {
-    width: 80%;
-    height: 1px;
-    background-color: black;
-}
-
-.card-info {
-    margin-bottom: 1rem;
-}
-
-.card-title {
-    font-family: var(--font-navigation);
-    font-size: 24px; /* Réduit pour s'adapter */
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.card-subtitle {
-    font-size: 12px;
-    color: #000;
-    opacity: 0.5;
-    text-align: center;
-}
-
-.card-state-block {
-    display: flex;
-    gap: 0.5rem;
-    flex-direction: column; /* Changé en colonne */
-    border: solid black 1px;
-    align-items: center;
-    padding: 1rem;
     width: 100%;
+    padding-top: 2rem;
 }
 
-.card-barcode {
-    font-family: var(--font-barcode);
-    font-size: 18px;
-}
-
-.card-status {
+.about-me-title {
     display: flex;
+    width: fit-content;
+    flex-direction: row;
+    width: 1500px;
+    max-height: 160px;
+}
+
+.about-me-title-part-1 {
+    font-family: var(--font-navigation);
+    align-items: center;
+    line-height: 140px;
+    font-size: 200px;
+}
+
+.about-me-title-part-2 {
+    display:flex;
     flex-direction: column;
-    text-align: center;
+    align-items: flex-start;
+    /* overflow: visible; */
 }
 
-.status-title {
-    font-family: var(--font-special);
-    font-size: 12px;
+.about-me-title-corps {
+    font-size: 100px;
+    line-height: 80px;
+    margin-bottom: 0;
+    padding: 0;
     font-weight: bold;
+    letter-spacing: -1px;
 }
 
-.status-value {
-    font-size: 10px;
+.banner {
+    overflow: hidden;
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    /* border-left: solid 1px #000; */
+    margin-left: 8px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .card-container {
-        flex-direction: column;
-        align-items: center;
+.banner-content {
+    /* display: absolute; */
+    white-space: nowrap;
+    animation: scroll-horizontal 40s linear infinite;
+}
+
+.banner-text {
+    font-family: var(--font-title);
+    font-size: 46px;
+    font-weight: bold;
+    color: #000;
+}
+
+.banner-text-spe {
+    font-family: var(--font-title);
+    font-size: 46px;
+    font-weight: bold;
+    color: #000;
+    /* margin-right: 10px; */
+    cursor:pointer;
+}
+
+@keyframes scroll-horizontal {
+    0% {
+        transform: translateX(0);
     }
-    
-    .card-background {
-        width: 300px;
-        margin-bottom: 2rem;
+    100% {
+        transform: translateX(-50%);
     }
+}
+
+.banner:hover .banner-content {
+    animation-play-state: paused;
 }

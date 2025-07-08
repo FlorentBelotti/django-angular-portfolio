@@ -22,6 +22,11 @@
 
 /* GLOBAL */
 
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
