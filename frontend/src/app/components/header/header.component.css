@@ -1,11 +1,9 @@
-/* Import des polices Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Alumni+Sans+Pinstripe:ital,wght@0,400;1,400&display=swap');
-
 .header {
   display: flex;
   flex-direction: column;
-  width: 1500px; /* S'adapte à la largeur du contenu */
-  margin: 0 auto; /* Centre le header sur la page */
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 .header-content {
@@ -17,10 +15,8 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   box-sizing: border-box;
-  gap: 20rem; /* Force un espacement minimum entre les blocs */
+  gap: 15%;
 }
-
-/* HEADER LEFT BLOCK */
 
 .header-left {
   display: flex;
@@ -28,7 +24,7 @@
   width: 100%;
   gap: 1rem;
   align-items: flex-start;
-  align-self: stretch; /* Force à prendre toute la hauteur */
+  align-self: stretch;
 }
 
 .header-image-block {
@@ -39,32 +35,22 @@
 }
 
 .header-image-block:hover {
-  transform: translateY(-8px); /* Lève le bloc de 8px */
-  animation: float-continuous 5s ease-in-out infinite; /* Animation flottante continue */
+  transform: translateY(-0.5rem);
+  animation: float-continuous 5s ease-in-out infinite;
 }
 
 @keyframes float-continuous {
-  0% {
-    transform: translate(0px, 0px);
-  }
-  25% {
-    transform: translate(2px, -8px);
-  }
-  50% {
-    transform: translate(-3px, -5px);
-  }
-  75% {
-    transform: translate(1px, -10px);
-  }
-  100% {
-    transform: translate(0px, 0px);
-  }
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(0.125rem, -0.5rem); }
+  50% { transform: translate(-0.1875rem, -0.3125rem); }
+  75% { transform: translate(0.0625rem, -0.625rem); }
+  100% { transform: translate(0, 0); }
 }
 
 .header-image {
-  width: 190px; /* Ajustez la taille selon vos besoins */
-  height: 190px;
-  object-fit: cover; /* Maintient les proportions et remplit le carré */
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
   opacity: 1;
 }
 
@@ -72,19 +58,19 @@
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
-  font-size: 12px;
-  padding-bottom: 5px;
+  font-size: 0.75rem;
+  padding-bottom: 0.3125rem;
 }
 
 .deco-block {
   display: flex;
-  width:fit-content;
+  width: fit-content;
   gap: 0.5rem;
   flex-direction: column;
 }
 
 .deco-line {
-  width: 200px;
+  width: 12.5rem;
   height: 1px;
   background-color: black;
 }
@@ -93,7 +79,7 @@
   display: flex;
   gap: 1rem;
   flex-direction: row;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .state-block {
@@ -106,8 +92,8 @@
 
 .barcode {
   font-family: var(--font-barcode);
-  font-size: 30px;
-  padding: 10px;
+  font-size: 1.875rem;
+  padding: 0.625rem;
 }
 
 .state-display {
@@ -117,12 +103,12 @@
 
 .state-title {
   font-family: var(--font-special);
-  font-size:14px;
+  font-size: 0.875rem;
   font-weight: bold;
 }
 
 .state {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .enigma-block {
@@ -130,72 +116,60 @@
   height: 100%;
   flex-direction: row;
   align-items: center;
-  font-size: 12px;
+  font-size: 0.75rem;
   gap: 0.5rem;
 }
 
-/* 
-.cowboy-quote {
-  font-display: block;
-} */
-
 .header-cross {
-  width: 80px; /* Ajustez la taille selon vos besoins */
-  height: 70px;
-  padding-left: 30px;
-  padding-right: 30px;
+  width: 5rem;
+  height: 4.375rem;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
   object-fit: cover;
-  /* background-color: rgba(217, 217, 217, 1); */
   color: #000;
   opacity: 0.9;
-  /* box-shadow: 1; */
 }
 
 .e-button {
-  /* padding-left: 45px; */
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   gap: 3rem;
   display: flex;
   flex-direction: row;
 }
 
 .e-button img {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* Bouton 1 - Tremblement */
 .e-button-1:hover {
   animation: shake 0.5s infinite;
 }
 
 @keyframes shake {
   0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(-2px, -2px); }
-  50% { transform: translate(2px, -2px); }
-  75% { transform: translate(-2px, 2px); }
+  25% { transform: translate(-0.125rem, -0.125rem); }
+  50% { transform: translate(0.125rem, -0.125rem); }
+  75% { transform: translate(-0.125rem, 0.125rem); }
 }
 
-/* Bouton 2 - Grossissement */
 .e-button-2:hover {
   transform: scale(1.3);
 }
 
-/* Bouton 3 - Tremblement gauche/droite */
 .e-button-3:hover {
   animation: horizontal-shake 0.3s infinite;
 }
 
 @keyframes horizontal-shake {
   0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  75% { transform: translateX(3px); }
+  25% { transform: translateX(-0.1875rem); }
+  75% { transform: translateX(0.1875rem); }
 }
 
-/* Bouton 4 - Rotation */
 .e-button-4:hover {
   animation: rotate 3s infinite linear;
 }
@@ -205,8 +179,6 @@
   100% { transform: rotate(360deg); }
 }
 
-/* HEADER RIGHT BLOCK */
-
 .header-right {
   display: flex;
   flex-direction: column;
@@ -215,33 +187,31 @@
   height: 100%;
   flex-grow: 1;
   gap: 1rem;
-  align-self: stretch; /* Force à prendre toute la hauteur */
+  align-self: stretch;
 }
 
 .music-player {
   display: flex;
   gap: 0.5rem;
   flex-direction: row;
+  min-width: 25rem;
+  max-width: 25rem;
   align-items: flex-start;
-  /* margin-bottom: 1rem; */
   width: 100%;
 }
 
-.music-play-placeholder {
-  width: 20px;
-  height: 20px;
-  background-color: black;
-}
-
+.music-play-placeholder,
 .music-pause-placeholder {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   background-color: black;
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .music-title-placeholder {
-  width: 400px;
-  height: 20px;
+  width: 100%;
+  max-width: 25rem;
+  height: 1.25rem;
   background-color: black;
   flex-grow: 1;
 }
@@ -249,22 +219,17 @@
 .glitch-auto {
   font-family: var(--font-title);
   display: flex;
-  font-size: 90px;
+  font-size: 5.625rem;
   color: black;
   margin: 0;
-  /* margin-bottom: 1rem; */
   line-height: 1;
   cursor: pointer;
   transition: opacity 0.3s ease;
   white-space: nowrap;
   overflow: visible;
   position: relative;
-  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
 }
-
-/* .header-title:hover {
-  opacity: 0.5;
-} */
 
 .navigation-buttons {
   display: flex;
@@ -282,7 +247,7 @@
 
 .navigation-buttons button a {
   font-family: var(--font-navigation);
-  font-size: 28px;
+  font-size: 1.75rem;
   color: black;
   text-decoration: none;
   display: block;
@@ -294,8 +259,6 @@
   opacity: 0.6;
   color: #666;
 }
-
-/* SEPARATOR */
 
 .separator {
   display: flex;
@@ -312,8 +275,8 @@
 }
 
 .separator-losange {
-  width:10px;
-  height:10px;
+  width: 0.625rem;
+  height: 0.625rem;
   border: 1px solid #000;
   transform: rotate(45deg);
 }

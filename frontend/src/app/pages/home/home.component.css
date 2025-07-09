@@ -1,12 +1,23 @@
 .home-container {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    position: relative; 
     height: 100%;
     width: 100%;
-    padding-top: 2rem;
-    gap:2rem;
+    padding-top: 2%;
+    gap: 2%;
+}
+
+.right-rectangle {
+    position: absolute;
+    right: 23%;
+    top: 4%;
+    width: 30%;
+    border: 1px solid black;
+    z-index: 0;
+    height: calc(115% - 2%);
 }
 
 .about-me-title {
@@ -14,31 +25,28 @@
     width: fit-content;
     flex-direction: row;
     margin-left: 12%;
-    /* width: 1500px; */
-    /* max-height: 160px; */
 }
 
 .about-me-title-part-1 {
     font-family: var(--font-navigation);
     align-items: center;
-    line-height: 140px;
-    font-size: 200px;
+    line-height: 7rem;
+    font-size: 10rem;
 }
 
 .about-me-title-part-2 {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* overflow: visible; */
 }
 
 .about-me-title-corps {
-    font-size: 100px;
-    line-height: 80px;
+    font-size: 5rem;
+    line-height: 4rem;
     margin-bottom: 0;
     padding: 0;
     font-weight: bold;
-    letter-spacing: -1px;
+    letter-spacing: -0.05rem;
 }
 
 .banner {
@@ -46,30 +54,30 @@
     display: flex;
     width: 100vw;
     align-items: center;
-    /* border-left: solid 1px #000; */
-    margin-left: 8px;
+    margin-left: 0.3%;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    z-index: 3;
 }
 
 .banner-content {
-    /* display: absolute; */
     white-space: nowrap;
     animation: scroll-horizontal 40s linear infinite;
 }
 
 .banner-text {
     font-family: var(--font-title);
-    font-size: 46px;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #000;
 }
 
 .banner-text-spe {
     font-family: var(--font-title);
-    font-size: 46px;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #000;
-    /* margin-right: 10px; */
-    cursor:pointer;
+    cursor: pointer;
 }
 
 @keyframes scroll-horizontal {
@@ -85,30 +93,11 @@
     animation-play-state: paused;
 }
 
-.home-bottom {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    /* justify-content: end;
-    align-items: flex-end; */
-    flex-direction: row;
-}
-
 .bio {
     font-family: var(--font-special);
-    font-size: 22px;
-    width: 35%;
-    margin-left: 8%;
-    text-align: left;
-    align-items: flex-start;
+    font-size: 1.1rem;
+    width: 15%;
+    margin-left: 18%;
+    margin-top: 2%;
     z-index: 1;
-}
-
-.knight-image {
-    position: fixed;
-    right: 2vw;
-    bottom: 0;
-    width: 40%;
-    height: 80%;
-    z-index: 2;
 }

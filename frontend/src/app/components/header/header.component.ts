@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private titleMap: { [key: string]: string } = {
     '/': 'WELCOME',
-    '/resume': 'ABOUT ME',
+    '/resume': 'FLORENT BELOTTI',
     '/school-projects': 'MY WORKS',
     '/side-projects': 'MY PROJECTS',
     '/testimonials': 'TESTIMONIALS',
