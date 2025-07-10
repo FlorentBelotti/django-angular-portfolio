@@ -1,6 +1,8 @@
 <main class="home-container">
     
-    <div class="right-rectangle"></div>
+    <div class="right-rectangle">
+        <img src="assets/images/Paradise_lost.png" alt="Logo" class="home-image">
+    </div>
     
     <div class="about-me-title">
 
@@ -8,7 +10,7 @@
 
         <div class="about-me-title-part-2">
 
-            <div class="about-me-title-corps">BOUT ME</div>
+            <div class="about-me-title-corps">BOUT THE AUTHOR</div>
             
             <div class="banner">
                 <div class="banner-content">
@@ -22,6 +24,8 @@
         </div>
     </div>
 
-    <div class="bio" *ngIf="bio"> {{ bio }} </div>
+    <div class="bio-container">
+        <div class="bio" *ngIf="bio"> {{ bio }} </div>
+    </div>
 
 </main>
