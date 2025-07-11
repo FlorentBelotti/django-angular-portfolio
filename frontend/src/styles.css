@@ -1,13 +1,203 @@
-/* Imports centralisés des polices */
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital,wght@0,400;1,400&family=Jacquard+12&family=IBM+Plex+Mono:wght@300;400;500;700&family=Bitter:wght@300;400;500;700&family=Libre+Barcode+128+Text&display=swap');
+/* POLICES LOCALES */
+@font-face {
+  font-family: 'Alumni Sans Pinstripe';
+  src: url('../public/assets/fonts/Alumni_Sans_Pinstripe/AlumniSansPinstripe-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Alumni Sans Pinstripe';
+  src: url('../public/assets/fonts/Alumni_Sans_Pinstripe/AlumniSansPinstripe-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bitter';
+  src: url('../public/assets/fonts/Bitter/Bitter-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bitter';
+  src: url('../public/assets/fonts/Bitter/Bitter-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../public/assets/fonts/IBM_Plex_Mono/IBMPlexMono-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Jacquard 12';
+  src: url('../public/assets/fonts/Jacquard_12/Jacquard12-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Jacquard 24';
+  src: url('../public/assets/fonts/Jacquard_24/Jacquard24-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Barcode 128 Text';
+  src: url('../public/assets/fonts/Libre_Barcode_128_Text/LibreBarcode128Text-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quintessential';
+  src: url('../public/assets/fonts/Quintessential/Quintessential-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'UnifrakturMaguntia';
+  src: url('../public/assets/fonts/UnifrakturMaguntia/UnifrakturMaguntia-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manufacturing Consent';
+  src: url('../public/assets/fonts/Manufacturing_Consent/ManufacturingConsent-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* FONT */
   --font-title: 'Alumni Sans Pinstripe', sans-serif;
+  --font-title-italic: 'Alumni Sans Pinstripe', sans-serif;
+
   --font-navigation: 'Jacquard 12', serif;
-  --font-normal: 'IBM Plex Mono', monospace;
-  --font-special: 'Bitter', serif;
   --font-barcode: 'Libre Barcode 128 Text', cursive;
+
+  --font-special: 'Bitter', serif;
+  --font-special-italic: 'Bitter', serif;
+
+  --font-normal: 'IBM Plex Mono', monospace;
+  --font-normal-thin: 'IBM Plex Mono', monospace;
+  --font-normal-thin-italic: 'IBM Plex Mono', monospace;
+  --font-normal-extralight: 'IBM Plex Mono', monospace;
+  --font-normal-extralight-italic: 'IBM Plex Mono', monospace;
+  --font-normal-light: 'IBM Plex Mono', monospace;
+  --font-normal-light-italic: 'IBM Plex Mono', monospace;
+  --font-normal-regular: 'IBM Plex Mono', monospace;
+  --font-normal-italic: 'IBM Plex Mono', monospace;
+  --font-normal-medium: 'IBM Plex Mono', monospace;
+  --font-normal-medium-italic: 'IBM Plex Mono', monospace;
+  --font-normal-semibold: 'IBM Plex Mono', monospace;
+  --font-normal-semibold-italic: 'IBM Plex Mono', monospace;
+  --font-normal-bold: 'IBM Plex Mono', monospace;
+  --font-normal-bold-italic: 'IBM Plex Mono', monospace;
+
+  --font-unifraktur: 'UnifrakturMaguntia', cursive;
+  --font-jacquard24: 'Jacquard 24', cursive;
+  --font-manufacturing-consent: 'Manufacturing Consent', cursive;
 
   /* GLITCH */
   --glitch-primary: #000000;

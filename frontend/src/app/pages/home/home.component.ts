@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { PersonalInfosService } from '../../services/personal-infos.service';
 import { personalInfos } from '../../interfaces/personal-infos.model';
 import { CommonModule } from '@angular/common';
+import { PointCloudImageComponent } from '../../components/point-cloud-image/point-cloud-image.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,
+    PointCloudImageComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

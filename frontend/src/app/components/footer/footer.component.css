@@ -5,8 +5,8 @@
     width: 100%;
     z-index: 1000;
     flex-direction: column;
-    height: 5%;
-    background: #313131;
+    height: 2%;
+    /* background: #313131; */
     opacity: 0.5;
 }
 
