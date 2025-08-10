@@ -21,7 +21,7 @@ export class AnimatedBackgroundComponent {
 
   // Handle framerate
   private frameCount = 0;
-  private frameSkip = 3;
+  private frameSkip = 1;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);

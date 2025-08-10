@@ -3,12 +3,14 @@ import { PersonalInfosService } from '../../services/personal-infos.service';
 import { personalInfos } from '../../interfaces/personal-infos.model';
 import { CommonModule } from '@angular/common';
 import { PointCloudImageComponent } from '../../components/point-cloud-image/point-cloud-image.component';
+import { AnimatedBackgroundComponent } from '../../components/animated-background/animated-background.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule,
-    PointCloudImageComponent
+    // PointCloudImageComponent,
+    AnimatedBackgroundComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

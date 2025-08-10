@@ -212,31 +212,32 @@
 
 /* GLOBAL */
 
-html {
+/* html {
   overflow-x: hidden;
   overflow-y: hidden;
   height: 100%;
   font-size: 16px;
-}
+} */
 
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #fff;
-  min-height: 100%;
-  height: 100%;
+  background-color: #191918;
+  min-height: 100vh;
+  height: 100vh;
   width: 100%;
-  font-family: var(--font-normal);
+  overflow: hidden;
+  /* font-family: var(--font-normal);
   font-size: 0.75rem;
-  color: black;
+  color: black; */
 }
 
 /* GLITCH CLASS */
 
   /* BUTTON GLITCH */
 
-.glitch-effect {
+/* .glitch-effect {
   position: relative;
 }
 
@@ -305,11 +306,11 @@ body {
     clip-path: var(--glitch-clip-four);
     transform: translate(0, 0);
   }
-}
+} */
 
 /* GLITCH AUTO */
 
-.glitch-auto {
+/* .glitch-auto {
   position: relative;
 }
 
@@ -373,4 +374,4 @@ body {
     clip-path: var(--glitch-clip-four);
     transform: translate(0, 0) skewX(0deg);
   }
-}
+} */
