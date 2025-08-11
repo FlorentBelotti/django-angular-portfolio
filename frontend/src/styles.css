@@ -212,25 +212,16 @@
 
 /* GLOBAL */
 
-/* html {
-  overflow-x: hidden;
-  overflow-y: hidden;
-  height: 100%;
-  font-size: 16px;
-} */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent; /* ou la couleur que vous voulez */
+    height: 100%;
+}
 
-
+/* Si vous avez une couleur de fond spécifique pour votre app */
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #191918;
-  min-height: 100vh;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  /* font-family: var(--font-normal);
-  font-size: 0.75rem;
-  color: black; */
+    background-color: black; /* ou la couleur de votre choix */
 }
 
 /* GLITCH CLASS */

@@ -8,9 +8,9 @@ import { AnimatedBackgroundComponent } from '../../components/animated-backgroun
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,
+  imports: [CommonModule
     // PointCloudImageComponent,
-    AnimatedBackgroundComponent
+    // AnimatedBackgroundComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

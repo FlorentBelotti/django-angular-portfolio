@@ -1,77 +1,19 @@
 <header class="header">
-<div class="header-content">
-  
-    <!-- <app-animated-background></app-animated-background> -->
+    <div class="header-content">
 
-    <div class="header-left">
-        <div class="header-image-block">
-            <div class="image-description"> 11K3 734r5 UN3 r41N</div>
-            <img src="assets/images/engraving.png" alt="Logo" class="header-image">
-        </div>
-        <div class=deco-block>
-            <div class="deco-line"></div>
-            <div class="deco-line"></div>
-                <div class="quote-1">
-                    <div>
-                        <div class="part-1">WHAT CRUEL IRONY IT IS /</div>
-                        <div class="part-2">THAT WE CAN CHOOSE /</div>
-
-                    </div>
-                    <div>
-                        <div class="part-3">TO CONTROL OUR THOUGHTS</div>
-                        <div class="part-4">BUT NOT OUR FEELINGS</div>
-                    </div>
-                </div>
-            <div class="state-block">
-                <div class="barcode"> 24601 </div>
-                <div class="state-display"> 
-                    <div class="state-title"> CURRENTLY WORKING ON...</div>
-                    <div class="state"> My portfolio</div>
-                </div>
-            </div>
-            <div class="enigma-block">
-                <div class="cowboy-quote">
-                    YOU'RE<br>
-                    GONNA<br>
-                    CARRY<br>
-                    THAT<br>
-                    WEIGHT
-                </div>
-                <img src="assets/icons/x-24.svg" alt="header-cross" class="header-cross">
-                <div class="e-button">
-                    <img src="assets/icons/circle-dot-icon.svg" class="e-button-1">
-                    <img src="assets/icons/circle-icon.svg" class="e-button-2">                   
-                    <img src="assets/icons/circle-stop-icon.svg" class="e-button-3">                   
-                    <img src="assets/icons/circle-line-icon.svg" class="e-button-4">                   
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-right">
-        <div class="music-player"> 
-            <div class="music-play-placeholder"> </div>
-            <div class="music-pause-placeholder"> </div>
-            <div class="music-title-placeholder"> </div>
-        </div>
-        <h1 class="glitch-auto" 
-            routerLink="/" 
-            [attr.data-text]="currentTitle"
-            routerLinkActive="active">
-            {{ currentTitle }}
-        </h1>
         <nav class="navigation-buttons">
             <button><a routerLink="/resume/" routerLinkActive="active" class="glitch-effect" data-text="About"> About </a></button>
             <button><a routerLink="/school-projects/" routerLinkActive="active" class="glitch-effect" data-text="Works"> Works </a></button>
             <button><a routerLink="/resume" routerLinkActive="active" class="glitch-effect" data-text="Contact"> Contact </a></button>
             <button><a routerLink="/admin/" routerLinkActive="active" class="glitch-effect" data-text="Login"> Login </a></button>
         </nav>
-    </div>
 
-</div>
-<div class="separator">
-    <div class="separator-losange"></div>
-    <div class="separator-line"></div>
-    <div class="separator-losange"></div>
-</div>
+        <h1 class="glitch-auto" 
+            routerLink="/" 
+            [attr.data-text]="currentTitle"
+            routerLinkActive="active">
+            {{ currentTitle }}
+        </h1>
+
+    </div>
 </header>

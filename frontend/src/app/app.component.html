@@ -1,18 +1,17 @@
 <div class="root-container">
-
-  <app-animated-background></app-animated-background>
   
+  <app-animated-background></app-animated-background>
+
   <!-- HEADER -->
-  <!-- <app-admin-header *ngIf="isAdminRoute"></app-admin-header>
-  <app-header *ngIf="!isAdminRoute"></app-header> -->
+  <app-admin-header *ngIf="isAdminRoute"></app-admin-header>
+  <app-header *ngIf="!isAdminRoute"></app-header>
 
-  <!-- TITLE -->
-  <!-- <h1>Portfolio Django/Angular</h1> -->
-
-  <!-- CONTAINER -->
-  <router-outlet></router-outlet>
+  <!-- MAIN CONTENT -->
+  <main style="flex: 1; overflow-y: auto;">
+    <router-outlet></router-outlet>
+  </main>
 
   <!-- FOOTER -->
-  <!-- <app-footer></app-footer> -->
+  <app-footer></app-footer>
 
 </div>

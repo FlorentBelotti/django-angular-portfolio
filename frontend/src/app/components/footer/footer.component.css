@@ -1,13 +1,19 @@
 .footer-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    z-index: 1000;
-    flex-direction: column;
-    height: 2%;
-    /* background: #313131; */
-    opacity: 0.5;
+    height: 98px; /* 100px - 2px de bordure = 98px */
+    /* background-color: #191918; */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid #333;
+}
+
+.footer-content {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
 }
 
 .banner {
