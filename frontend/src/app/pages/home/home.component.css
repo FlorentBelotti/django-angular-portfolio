@@ -1,10 +1,9 @@
-.banner-container {
+.blocks-wrapper {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
-    overflow: hidden;
-    gap:1rem;
+    gap: 1rem;
 }
 
 .left-block,

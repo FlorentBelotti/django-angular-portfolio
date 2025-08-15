@@ -3,7 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { RouterLink, RouterLinkActive } from '@angular/router'
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { AnimatedBackgroundComponent } from '../animated-background/animated-background.component';
+import { AnimatedBackgroundComponent } from '../animation/animation-perlin/animation-perlin.component';
 
 @Component({
   selector: 'app-header',

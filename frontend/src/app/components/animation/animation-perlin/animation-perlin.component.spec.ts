@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnimatedBackgroundComponent } from './animated-background.component';
+import { AnimatedBackgroundComponent } from './animation-perlin.component';
 
 describe('AnimatedBackgroundComponent', () => {
   let component: AnimatedBackgroundComponent;

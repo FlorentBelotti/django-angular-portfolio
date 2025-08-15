@@ -8,10 +8,10 @@ import {   Component,
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-  selector: 'app-animated-background',
+  selector: 'app-animation-perlin',
   imports: [],
-  templateUrl: './animated-background.component.html',
-  styleUrl: './animated-background.component.css'
+  templateUrl: './animation-perlin.component.html',
+  styleUrl: './animation-perlin.component.css'
 })
 export class AnimatedBackgroundComponent {
   @ViewChild('grainCanvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
