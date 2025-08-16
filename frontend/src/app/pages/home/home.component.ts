@@ -3,13 +3,15 @@ import { PersonalInfosService } from '../../services/personal-infos.service';
 import { personalInfos } from '../../interfaces/personal-infos.model';
 import { CommonModule } from '@angular/common';
 import { AnimationParticuleComponent } from '../../components/animation/animation-particule/animation-particule.component';
+import { PointCloudImageComponent } from '../../components/point-cloud-image/point-cloud-image.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    AnimationParticuleComponent
+    AnimationParticuleComponent,
+    PointCloudImageComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

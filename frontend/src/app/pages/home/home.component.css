@@ -33,10 +33,16 @@
     /* border: 1px solid white;*/
     background-color: rgba(0, 0, 0, 0.7);
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .left-bottom-block-content {
     color: white;
+    font-family: var(--font-manufacturing-consent);
+    font-size: 100px;
 }
 
 .center-block {
@@ -56,9 +62,9 @@
 
 .center-right-block {
     flex: 2;
-    background-color: rgba(0, 0, 0, 0.7);
     box-sizing: border-box;
     position: relative;
+    border: 1px solid white;
     overflow: hidden;
 }
 
