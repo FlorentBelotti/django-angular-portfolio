@@ -7,7 +7,7 @@ import { NgIf } from '@angular/common';;
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
-import { AnimatedBackgroundComponent } from './components/animation/animation-perlin/animation-perlin.component';
+// import { AnimatedBackgroundComponent } from './components/animation/animation-perlin/animation-perlin.component';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +17,8 @@ import { AnimatedBackgroundComponent } from './components/animation/animation-pe
     NgIf,
     HeaderComponent,
     FooterComponent,
-    AdminHeaderComponent,
-    AnimatedBackgroundComponent
+    AdminHeaderComponent
+    // AnimatedBackgroundComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

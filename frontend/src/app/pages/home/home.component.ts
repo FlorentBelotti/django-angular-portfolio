@@ -12,7 +12,7 @@ import { SlidingShutterComponent } from '../../components/fragments/sliding-shut
   standalone: true,
   imports: [
     CommonModule,
-    AnimationParticuleComponent,
+    // AnimationParticuleComponent,
     PointCloudImageComponent,
     MovingBannerComponent,
     SlidingShutterComponent
