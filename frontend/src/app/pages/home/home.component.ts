@@ -3,7 +3,9 @@ import { PersonalInfosService } from '../../services/personal-infos.service';
 import { personalInfos } from '../../interfaces/personal-infos.model';
 import { CommonModule } from '@angular/common';
 import { AnimationParticuleComponent } from '../../components/animation/animation-particule/animation-particule.component';
-import { PointCloudImageComponent } from '../../components/point-cloud-image/point-cloud-image.component';
+import { PointCloudImageComponent } from '../../components/animation/point-cloud-image/point-cloud-image.component';
+import { MovingBannerComponent } from '../../components/fragments/moving-banner/moving-banner.component';
+import { SlidingShutterComponent } from '../../components/fragments/sliding-shutter/sliding-shutter.component';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +13,16 @@ import { PointCloudImageComponent } from '../../components/point-cloud-image/poi
   imports: [
     CommonModule,
     AnimationParticuleComponent,
-    PointCloudImageComponent
+    PointCloudImageComponent,
+    MovingBannerComponent,
+    SlidingShutterComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   bio: string = '';
+  scrollingText: string = 'FULL STACK DEVELOPER • CREATIVE DESIGNER • THINKER • PASSIONATE • RATHER GOOD LOOKING ';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,

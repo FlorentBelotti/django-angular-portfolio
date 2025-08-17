@@ -1,9 +1,7 @@
 <div class="blocks-wrapper">
     <div class="left-block">
         <div class="left-top-block"> </div>
-        <div class="left-bottom-block">
-            <div class="left-bottom-block-content">Would you like to see more?</div>
-        </div>
+        <div class="left-bottom-block"> </div>
     </div>
     <div class="center-block">
         <div class="center-left-block">
@@ -16,11 +14,16 @@
     <div class="right-block">
         <div class="right-top-block">
             <div class="right-top-upper">
-                <!-- <img src="assets/images/Solaire.gif" alt="Description du GIF" class="gif-image"> -->
+                <app-sliding-shutter text="WOULD YOU LIKE TO KNOW MORE?"></app-sliding-shutter>
             </div>
-            <div class="right-top-lower"> </div>
+            <div class="right-top-lower">
+                <app-moving-banner [text]="scrollingText"></app-moving-banner>
+            </div>
         </div>
         <div class="right-bottom-block">
+            <div class="avant-propos-container">
+                Avant-propos
+            </div>
             <div class="separator">
                 <div class="separator-losange"></div>
                 <div class="separator-line"></div>
