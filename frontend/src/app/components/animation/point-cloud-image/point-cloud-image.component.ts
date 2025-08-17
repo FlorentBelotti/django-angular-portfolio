@@ -81,6 +81,13 @@ export class PointCloudImageComponent implements AfterViewInit, OnDestroy {
 }
 
 class ImageParticle {
+  // Configuration variables
+  private static readonly EASE = 0.15;
+  private static readonly FRICTION = 0.92;
+  private static readonly FORCE_MULTIPLIER = 12;
+  private static readonly PARTICLE_SIZE = 2;
+
+  // Properties
   originX: number;
   originY: number;
   effect: ImagePointCloudEffect;
@@ -89,8 +96,6 @@ class ImageParticle {
   ctx: CanvasRenderingContext2D;
   vx: number = 0;
   vy: number = 0;
-  ease: number = 0.15;
-  friction: number = 0.92;
   dx: number = 0;
   dy: number = 0;
   distance: number = 0;
@@ -98,55 +103,76 @@ class ImageParticle {
   angle: number = 0;
   size: number;
   color: { r: number, g: number, b: number };
+  private colorString: string; // Cached color string
 
   constructor(x: number, y: number, effect: ImagePointCloudEffect, color: { r: number, g: number, b: number }) {
     this.originX = x;
     this.originY = y;
     this.effect = effect;
-    this.x = Math.floor(x);
-    this.y = Math.floor(y);
+    this.x = x;
+    this.y = y;
     this.ctx = this.effect.ctx;
     this.color = color;
-    this.size = Math.random() * 2 + 1;
+    this.size = ImageParticle.PARTICLE_SIZE;
+    // Pre-calculate color string for performance
+    this.colorString = `rgb(${Math.floor(color.r * 255)}, ${Math.floor(color.g * 255)}, ${Math.floor(color.b * 255)})`;
   }
 
   draw() {
-    this.ctx.fillStyle = `rgb(${Math.floor(this.color.r * 255)}, ${Math.floor(this.color.g * 255)}, ${Math.floor(this.color.b * 255)})`;
+    this.ctx.fillStyle = this.colorString;
     this.ctx.beginPath();
-    this.ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, this.size);
+    this.ctx.arc(this.x, this.y, this.size * 0.5, 0, Math.PI * 2);
+    this.ctx.fill();
   }
 
   update() {
+    // Optimized distance calculation
     this.dx = this.effect.mouse.x - this.x;
     this.dy = this.effect.mouse.y - this.y;
     this.distance = this.dx * this.dx + this.dy * this.dy;
-    this.force = -this.effect.mouse.radius / this.distance * 12;
 
     if (this.distance < this.effect.mouse.radius) {
+      this.force = -this.effect.mouse.radius / this.distance * ImageParticle.FORCE_MULTIPLIER;
       this.angle = Math.atan2(this.dy, this.dx);
       this.vx += this.force * Math.cos(this.angle);
       this.vy += this.force * Math.sin(this.angle);
     }
 
-    this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
-    this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
+    // Apply friction and ease back to origin
+    this.vx *= ImageParticle.FRICTION;
+    this.vy *= ImageParticle.FRICTION;
+    this.x += this.vx + (this.originX - this.x) * ImageParticle.EASE;
+    this.y += this.vy + (this.originY - this.y) * ImageParticle.EASE;
+    
     this.draw();
   }
 }
 
 class ImagePointCloudEffect {
+  // Configuration variables - Easy to adjust
+  private static readonly PARTICLE_STEP = 3;
+  private static readonly ALPHA_THRESHOLD = 0.05;
+  private static readonly MOUSE_RADIUS = 5000;
+  private static readonly BACKGROUND_ALPHA = 0.05;
+  private static readonly ANIMATION_DELAY = 100;
+
+  // Properties
   width: number;
   height: number;
   ctx: CanvasRenderingContext2D;
   particlesArray: ImageParticle[] = [];
   mouse = {
-    radius: 5000,
+    radius: ImagePointCloudEffect.MOUSE_RADIUS,
     x: -1000,
     y: -1000
   };
   private canvas: HTMLCanvasElement;
   private imageSrc: string;
   private imageLoaded: boolean = false;
+  private lastTime: number = 0;
+  private frameSkip: number = 0;
+  private readonly targetFPS = 60;
+  private readonly frameInterval = 1000 / this.targetFPS;
 
   constructor(width: number, height: number, context: CanvasRenderingContext2D, canvas: HTMLCanvasElement, imageSrc: string) {
     this.width = width;
@@ -155,18 +181,22 @@ class ImagePointCloudEffect {
     this.canvas = canvas;
     this.imageSrc = imageSrc;
 
-    this.canvas.addEventListener('mousemove', (e) => {
-      const rect = this.canvas.getBoundingClientRect();
-      this.mouse.x = (e.clientX - rect.left) * window.devicePixelRatio;
-      this.mouse.y = (e.clientY - rect.top) * window.devicePixelRatio;
-    });
-
-    this.canvas.addEventListener('mouseleave', () => {
-      this.mouse.x = -1000;
-      this.mouse.y = -1000;
-    });
+    // Optimized event listeners with passive option
+    this.canvas.addEventListener('mousemove', this.handleMouseMove.bind(this), { passive: true });
+    this.canvas.addEventListener('mouseleave', this.handleMouseLeave.bind(this), { passive: true });
 
     this.loadImage();
+  }
+
+  private handleMouseMove(e: MouseEvent) {
+    const rect = this.canvas.getBoundingClientRect();
+    this.mouse.x = (e.clientX - rect.left) * window.devicePixelRatio;
+    this.mouse.y = (e.clientY - rect.top) * window.devicePixelRatio;
+  }
+
+  private handleMouseLeave() {
+    this.mouse.x = -1000;
+    this.mouse.y = -1000;
   }
 
   loadImage() {
@@ -181,7 +211,7 @@ class ImagePointCloudEffect {
 
   createParticlesFromImage(img: HTMLImageElement) {
     const tempCanvas = document.createElement('canvas');
-    const tempCtx = tempCanvas.getContext('2d')!;
+    const tempCtx = tempCanvas.getContext('2d', { willReadFrequently: true })!;
     
     // Scale image to cover the entire canvas (like object-fit: cover)
     const imgAspect = img.width / img.height;
@@ -211,18 +241,22 @@ class ImagePointCloudEffect {
     const imageData = tempCtx.getImageData(0, 0, this.width, this.height);
     const data = imageData.data;
     
-    this.particlesArray = [];
-    const step = 4; // Adjust density
+    // Clear previous particles
+    this.particlesArray.length = 0;
     
-    for (let y = 0; y < this.height; y += step) {
-      for (let x = 0; x < this.width; x += step) {
-        const i = (y * this.width + x) * 4;
-        const r = data[i] / 255;
-        const g = data[i + 1] / 255;
-        const b = data[i + 2] / 255;
+    // Optimized particle creation with batch processing
+    const step = ImagePointCloudEffect.PARTICLE_STEP;
+    const threshold = ImagePointCloudEffect.ALPHA_THRESHOLD;
+    
+    for (let y = step * 0.5; y < this.height; y += step) {
+      for (let x = step * 0.5; x < this.width; x += step) {
+        const i = (Math.floor(y) * this.width + Math.floor(x)) * 4;
         const a = data[i + 3] / 255;
         
-        if (a > 0.1) {
+        if (a > threshold) {
+          const r = data[i] / 255;
+          const g = data[i + 1] / 255;
+          const b = data[i + 2] / 255;
           this.particlesArray.push(new ImageParticle(x, y, this, { r, g, b }));
         }
       }
@@ -237,15 +271,26 @@ class ImagePointCloudEffect {
     }
   }
 
-  update() {
+  update(currentTime: number = performance.now()) {
     if (!this.imageLoaded) return;
     
+    // Frame rate limiting for performance
+    if (currentTime - this.lastTime < this.frameInterval) {
+      return;
+    }
+    this.lastTime = currentTime;
+    
+    // Optimized background clear
     this.ctx.clearRect(0, 0, this.width, this.height);
-    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    this.ctx.fillStyle = `rgba(0, 0, 0, ${ImagePointCloudEffect.BACKGROUND_ALPHA})`;
     this.ctx.fillRect(0, 0, this.width, this.height);
     
-    for (let i = 0; i < this.particlesArray.length; i++) {
-      this.particlesArray[i].update();
+    // Batch particle updates
+    const particles = this.particlesArray;
+    const length = particles.length;
+    
+    for (let i = 0; i < length; i++) {
+      particles[i].update();
     }
   }
 }
