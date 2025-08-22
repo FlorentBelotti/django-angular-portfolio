@@ -1,0 +1,17 @@
+<div class="vertical-title-container" 
+     [class.vertical-title-container-hovered]="isHovered"
+     (mouseenter)="onMouseEnter()" 
+     (mouseleave)="onMouseLeave()">
+  <div class="vertical-title"
+       [ngStyle]="{'font-weight': fontWeight, 'font-size': fontSize}">
+    {{ title }}
+  </div>
+  <div class="vertical-title-lorem" [class.visible]="isHovered">
+    <div 
+      class="horizontal-title" 
+      [ngStyle]="{'font-weight': fontWeight, 'font-size': fontSize}">
+      {{ title }}
+    </div>
+    {{ lorem }}
+  </div>
+</div>

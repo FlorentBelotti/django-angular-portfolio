@@ -22,6 +22,37 @@
 .left-top-block {
     flex: 7;
     border: 1px solid white;
+    position: relative; /* Ajouté pour positionner le menu */
+    overflow: hidden;
+}
+
+.left-top-title {
+    color: white;
+    margin-left: 30px;
+    font-weight: 600;
+    font-size: 3em;
+    display: flex;
+    align-items: top;
+    height: 100%;
+    letter-spacing: 0.1em;
+    font-family: var(--font-special, inherit);
+}
+
+.left-top-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 0.7rem; /* Réduit l'espace entre les titres */
+    padding: 0.5rem 0 0.5rem 1.5rem; /* espace avec le bord */
+    width: 100%;
+    z-index: 10;
+    /* background: transparent; */
+    /* pointer-events: none;  <-- SUPPRIMER CETTE LIGNE */
 }
 
 .left-bottom-block {

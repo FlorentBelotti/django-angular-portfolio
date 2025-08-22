@@ -8,6 +8,7 @@ import { MovingBannerComponent } from '../../components/fragments/moving-banner/
 import { SlidingShutterComponent } from '../../components/fragments/sliding-shutter/sliding-shutter.component';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { SlidingTitleComponent } from '../../components/fragments/sliding-title/sliding-title.component';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatIconModule,
     PointCloudImageComponent,
     MovingBannerComponent,
+    SlidingTitleComponent,
     SlidingShutterComponent
   ],
   templateUrl: './home.component.html',
