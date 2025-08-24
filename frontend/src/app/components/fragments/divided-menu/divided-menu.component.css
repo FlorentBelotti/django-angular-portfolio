@@ -13,14 +13,14 @@
   justify-content: flex-start;
   align-items: flex-end;
   height: 100%;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .menu-title {
   width: 100%;
   text-align: right;
   margin-bottom: 24px; /* Augmente l'espace sous le titre "HIGHLIGHTS" */
-  color: #fff;
+  /* color: #fff; */
   font-weight: 700;
   font-size: 2em;
 }
@@ -42,28 +42,31 @@
   padding-right: 10px;
   display: flex;
   align-items: center;
-  color: #fff;
-}
-
-.menu-choice .choice-title {
-  transition: color 0.2s, transform 0.2s;
-  color: #fff;
-}
-
-.menu-choice.hovered .choice-title {
-  color: #fff;
-  transform: translateX(-8px) scale(1.05);
+  /* color: #fff; */
 }
 
 .menu-choice .choice-cursor {
   display: inline-block;
-  width: 18px;
+  width: 8px;
   height: 24px;
-  /* border: 1px solid #fff; */
-  border-radius: 2px;
+  border: none;
+  border-radius: 0; /* Suppression des bords arrondis */
   margin-left: 8px;
-  background: transparent;
-  animation: cursor-slide 0.2s;
+  background: #fff;
+  animation: cursor-slide 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  vertical-align: middle;
+}
+
+.menu-choice .choice-title {
+  transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  /* color: #fff; */
+}
+
+.menu-choice.hovered .choice-title,
+.menu-choice:hover .choice-title {
+  /* color: #fff; */
+  transform: translateX(-18px); /* Décale le titre de la largeur du curseur + margin */
+  transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes cursor-slide {
@@ -85,11 +88,11 @@
   display: flex;
   align-items: flex-start;
   height: 100%;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .description-content {
-  color: #fff;
+  /* color: #fff; */
   font-size: 1em;
   word-break: break-word;
 }
