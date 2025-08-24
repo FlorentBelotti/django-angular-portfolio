@@ -1,33 +1,76 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { PersonalInfosService } from '../../services/personal-infos.service';
-import { personalInfos } from '../../interfaces/personal-infos.model';
 import { CommonModule } from '@angular/common';
-import { AnimationParticuleComponent } from '../../components/animation/animation-particule/animation-particule.component';
 import { PointCloudImageComponent } from '../../components/animation/point-cloud-image/point-cloud-image.component';
 import { MovingBannerComponent } from '../../components/fragments/moving-banner/moving-banner.component';
 import { SlidingShutterComponent } from '../../components/fragments/sliding-shutter/sliding-shutter.component';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SlidingTitleComponent } from '../../components/fragments/sliding-title/sliding-title.component';
+import { AnimationParticuleComponent } from '../../components/animation/animation-particule/animation-particule.component';
+import { DividedMenuComponent, DividedMenuItem } from '../../components/fragments/divided-menu/divided-menu.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    // AnimationParticuleComponent,
     MatIconModule,
     PointCloudImageComponent,
+    AnimationParticuleComponent,
     MovingBannerComponent,
-    SlidingTitleComponent,
-    SlidingShutterComponent
+    SlidingShutterComponent,
+    DividedMenuComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  bio: string = '';
-  scrollingText: string = 'FULL STACK DEVELOPER • CREATIVE DESIGNER • THINKER • PASSIONATE • RATHER GOOD LOOKING ';
+  
+  
+  // CONFIG
+  
+  bio = '';
+  scrollingText = 'FULL STACK DEVELOPER • CREATIVE DESIGNER • DATA ENGINEER • PASSIONATE • RATHER GOOD LOOKING • FULL STACK DEVELOPER • CREATIVE DESIGNER • DATA ENGINEER • PASSIONATE • RATHER GOOD LOOKING ';
+
+  menuTitle = 'HIGHLIGHTS';
+  menuFontFamily = "'Montserrat', sans-serif";
+  menuFontSize = '2em'; // augmenté
+  menuFontWeight = 700; // bold
+  menuItems: DividedMenuItem[] = [
+    {
+      title: "My projects",
+      description: "Découvrez mes projets récents en développement web, design et innovation technique.",
+      fontWeight: 100,
+      fontSize: "1em"
+    },
+    {
+      title: "A lot of experiences",
+      description: "Plus de 3 ans d'expérience dans le développement full stack et logiciel",
+      fontWeight: 100,
+      fontSize: "1em"
+    },
+    {
+      title: "Passion of christ",
+      description: "Créativité, nouvelles technologies, IA, musique et photographie rythment mon quotidien professionnel.",
+      fontWeight: 100,
+      fontSize: "1em"
+    },
+    {
+      title: "Again?",
+      description: "Maîtrise de JavaScript, Python, Angular, Django, ainsi que des outils modernes de développement et de design.",
+      fontWeight: 100,
+      fontSize: "1em"
+    },
+    {
+      title: "Howdy! Traveller",
+      description: "Diplômé d'une grande école d'ingénieur, passionné par l'apprentissage continu et la veille technologique.",
+      fontWeight: 100,
+      fontSize: "1em"
+    }
+  ];
+
+  // INIT
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -35,16 +78,34 @@ export class HomeComponent {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
+    this.loadBio();
+    this.registerIcons();
+  }
+
+  // METHODS
+
+  private loadBio() {
     this.personalInfosService.get().subscribe({
       next: (data: any) => {
-        if (data && data.length > 0) {
-          this.bio = data[0].bio;
-        }
+        if (data?.length > 0) this.bio = data[0].bio;
       },
       error: (error: any) => {
         console.error('Error loading bio', error);
       }
     });
+  }
+
+  getCurrentDate(): string {
+    return new Date().toISOString().split('T')[0].replace(/-/g, '.');
+  }
+
+  getCurrentTimestamp(): string {
+    return Date.now().toString().slice(-5);
+  }
+
+  // DISPLAY
+
+  private registerIcons() {
     this.matIconRegistry.addSvgIconLiteral(
       'github',
       this.domSanitizer.bypassSecurityTrustHtml(`
@@ -61,13 +122,5 @@ export class HomeComponent {
         </svg>
       `)
     );
-  }
-
-  getCurrentDate(): string {
-    return new Date().toISOString().split('T')[0].replace(/-/g, '.');
-  }
-
-  getCurrentTimestamp(): string {
-    return Date.now().toString().slice(-5);
   }
 }

@@ -1,0 +1,25 @@
+<div class="divided-menu-root">
+  <div class="menu-block">
+    <div class="menu-title" [ngStyle]="{ 'font-family': fontFamily, 'font-size': fontSize, 'font-weight': fontWeight }">
+      {{ menuTitle }}
+    </div>
+    <div class="menu-choices">
+      <div
+        class="menu-choice"
+        *ngFor="let item of items; let i = index"
+        [ngStyle]="{ 'font-family': fontFamily, 'font-size': item.fontSize || fontSize, 'font-weight': item.fontWeight || fontWeight }"
+        [class.hovered]="hoveredIndex === i"
+        (mouseenter)="hoveredIndex = i"
+        (mouseleave)="hoveredIndex = null"
+      >
+        <span class="choice-title">{{ item.title }}</span>
+        <span class="choice-cursor" *ngIf="hoveredIndex === i"></span>
+      </div>
+    </div>
+  </div>
+  <div class="description-block">
+    <div class="description-content" *ngIf="hoveredIndex !== null && hoveredIndex >= 0 && hoveredIndex < items.length">
+      {{ items[hoveredIndex].description }}
+    </div>
+  </div>
+</div>

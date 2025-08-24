@@ -1,108 +1,53 @@
 .vertical-title-container {
-    position: relative; /* Ajouté */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
     height: auto;
-    z-index: 2;
-}
-
-.vertical-title-container-hovered {
-    z-index: 200 !important;
+    gap: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .vertical-title {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
     color: white;
     font-family: var(--font-special, inherit);
-    font-size: 2.5em;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    white-space: nowrap;
     cursor: pointer;
-    transition: 
-        transform 0.3s cubic-bezier(.25,1.7,.45,.85), 
-        color 0.3s;
-    text-align: right;
-    user-select: none;
-    z-index: 2;
-    align-self: flex-end;
     position: relative;
+    transition: margin-right 0.2s;
+    width: 100%;
+    text-align: right;
+    margin: 0;
+    padding: 0;
 }
 
 .vertical-title::after {
     content: '';
     display: block;
     position: absolute;
-    left: 50%;
-    bottom: -32px; /* Plus bas pour séparer du titre */
-    transform: translateX(-50%) scale(0);
-    width: 28px;
-    height: 28px;
-    background: #fff; /* Carré blanc */
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 25px;
+    background: white;
     border-radius: 0;
-    box-shadow: none; /* Pas d'ombre */
-    transition: transform 0.3s cubic-bezier(.25,1.7,.45,.85), background 0.3s;
-    z-index: 1;
-}
-
-.vertical-title-container:hover .vertical-title {
-    transform: translateY(-32px) scale(1.15); /* Plus élevé */
-}
-
-.vertical-title-container:hover .vertical-title::after {
-    transform: translateX(-50%) scale(1);
-    background: #fff;
-}
-
-.vertical-title-lorem {
     opacity: 0;
+    transition: opacity 0.2s;
     pointer-events: none;
-    width: 220px;
-    height: 220px;
-    position: absolute;
-    left: calc(100% + 0.7rem); /* Décalage aligné avec le gap */
-    top: 0;
-    margin-left: 0;
-    background: none;
-    color: white;
-    border-radius: 0; /* Suppression des bords arrondis */
-    font-size: 1em;
-    font-family: var(--font-special, inherit);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start; /* Place le contenu en haut */
-    transition: 
-        opacity 0.4s cubic-bezier(.25,1.7,.45,.85),
-        transform 0.5s cubic-bezier(.25,1.7,.45,.85);
-    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
-    /* Animation modifiée : commence décalé à gauche */
-    transform: translateY(20px) translateX(-40px) scale(0.95);
-    border: none;
     z-index: 10;
-    padding: 1.2em 1em 1em 1em;
-    background-color: #000; /* Fond noir */
 }
 
-/* Ajout : animation déclenchée par la classe .visible */
-.vertical-title-lorem.visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0) translateX(0) scale(1.05);
-    border: none;
-    z-index: 100;
+.vertical-title-container-hovered .vertical-title {
+    margin-right: 30px;
 }
 
-.horizontal-title {
-    display: block;
-    color: white;
-    font-family: var(--font-special, inherit);
-    margin-bottom: 0.7em;
-    text-align: left;
-    white-space: normal;
-    /* Optionnel : effet d'apparition */
+.vertical-title-container-hovered .vertical-title::after {
     opacity: 1;
-    transition: opacity 0.3s;
+}
+
+/* Supprime les marges entre les titres */
+.vertical-title + .vertical-title {
+    margin-top: 0;
 }

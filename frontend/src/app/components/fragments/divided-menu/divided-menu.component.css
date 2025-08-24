@@ -1,0 +1,95 @@
+.divided-menu-root {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-block {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100%;
+  color: #fff;
+}
+
+.menu-title {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 24px; /* Augmente l'espace sous le titre "HIGHLIGHTS" */
+  color: #fff;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+.menu-choices {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.menu-choice {
+  position: relative;
+  width: fit-content;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+  text-align: right;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.menu-choice .choice-title {
+  transition: color 0.2s, transform 0.2s;
+  color: #fff;
+}
+
+.menu-choice.hovered .choice-title {
+  color: #fff;
+  transform: translateX(-8px) scale(1.05);
+}
+
+.menu-choice .choice-cursor {
+  display: inline-block;
+  width: 18px;
+  height: 24px;
+  /* border: 1px solid #fff; */
+  border-radius: 2px;
+  margin-left: 8px;
+  background: transparent;
+  animation: cursor-slide 0.2s;
+}
+
+@keyframes cursor-slide {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.description-block {
+  width: 60%;
+  border: 1px solid #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  color: #fff;
+}
+
+.description-content {
+  color: #fff;
+  font-size: 1em;
+  word-break: break-word;
+}

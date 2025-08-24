@@ -2,6 +2,24 @@
   --font-title: 'Roboto', sans-serif;
   --font-normal: 'Roboto', sans-serif;
   --font-special: 'Roboto', sans-serif;
+
+  /* Color palette */
+  --crimson-red: #A41E22;
+  --signal-red: #D92B2B;
+  --burnt-orange: #C7532B;
+  --concrete-light: #B1B1B1;
+  --concrete-dark: #6B6B6B;
+  --onyx-black: #0C0C0C;
+  --offwhite: #E6E6E6;
+
+  /* Usage */
+  --background-main: var(--onyx-black);
+  --background-structure: var(--concrete-dark);
+  --accent-primary: var(--crimson-red);
+  --accent-secondary: var(--signal-red);
+  --accent-warm: var(--burnt-orange);
+  --text-main: var(--offwhite);
+  --text-muted: var(--concrete-light);
 }
 
 /* GLOBAL */
@@ -14,6 +32,12 @@ html, body {
 }
 
 body {
-    background-color: black;
+    background-color: var(--background-main);
     font-family: var(--font-normal);
+    color: var(--text-main);
+}
+
+/* Set default border color for all elements */
+* {
+    border-color: var(--text-main);
 }

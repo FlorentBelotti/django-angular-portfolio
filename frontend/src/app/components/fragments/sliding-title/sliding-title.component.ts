@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,16 +9,20 @@ import { CommonModule } from '@angular/common';
 })
 export class SlidingTitleComponent {
   @Input() title: string = 'VERTICAL TITLE';
-  @Input() lorem: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur euismod, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod.';
   @Input() fontWeight: number = 700;
-  @Input() fontSize: string = '2.5em';
+  @Input() fontSize: string = '1.2em'; // Uniformisé avec .lorem-title
+
+  @Output() hoverChange = new EventEmitter<void>();
 
   isHovered = false;
 
+  // Déclenche l'événement de survol pour le parent
   onMouseEnter() {
     this.isHovered = true;
+    this.hoverChange.emit();
   }
 
+  // Réinitialise l'état de survol local
   onMouseLeave() {
     this.isHovered = false;
   }

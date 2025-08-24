@@ -85,7 +85,7 @@ class ImageParticle {
   private static readonly EASE = 0.15;
   private static readonly FRICTION = 0.92;
   private static readonly FORCE_MULTIPLIER = 12;
-  private static readonly PARTICLE_SIZE = 2;
+  private static readonly PARTICLE_SIZE = 5; // Taille des particules agrandie
 
   // Properties
   originX: number;
@@ -121,7 +121,8 @@ class ImageParticle {
   draw() {
     this.ctx.fillStyle = this.colorString;
     this.ctx.beginPath();
-    this.ctx.arc(this.x, this.y, this.size * 0.5, 0, Math.PI * 2);
+    this.ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2); // Utilise size/2 pour rayon
+    this.ctx.closePath(); // Ajouté pour garantir la fermeture du cercle
     this.ctx.fill();
   }
 
@@ -150,7 +151,7 @@ class ImageParticle {
 
 class ImagePointCloudEffect {
   // Configuration variables - Easy to adjust
-  private static readonly PARTICLE_STEP = 3;
+  private static readonly PARTICLE_STEP = 10; // Augmente encore l'espacement entre les particules
   private static readonly ALPHA_THRESHOLD = 0.05;
   private static readonly MOUSE_RADIUS = 5000;
   private static readonly BACKGROUND_ALPHA = 0.05;
