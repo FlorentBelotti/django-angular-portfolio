@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { SlidingTitleComponent } from '../../components/fragments/sliding-title/sliding-title.component';
 import { AnimationParticuleComponent } from '../../components/animation/animation-particule/animation-particule.component';
 import { DividedMenuComponent, DividedMenuItem } from '../../components/fragments/divided-menu/divided-menu.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -76,7 +77,8 @@ export class HomeComponent {
     @Inject(PLATFORM_ID) private platformId: Object,
     private personalInfosService: PersonalInfosService,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private router: Router
   ) {
     this.loadBio();
     this.registerIcons();
@@ -101,6 +103,10 @@ export class HomeComponent {
 
   getCurrentTimestamp(): string {
     return Date.now().toString().slice(-5);
+  }
+
+  goToSchoolProjects() {
+    this.router.navigate(['/works']);
   }
 
   // DISPLAY

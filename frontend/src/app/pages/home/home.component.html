@@ -1,37 +1,26 @@
 <div class="blocks-wrapper">
     <div class="left-block">
-        <div class="left-top-block"> 
-            <div class="top-upper"></div>
-            <div class="top-menu">
-                <app-divided-menu
-                  [menuTitle]="menuTitle"
-                  [items]="menuItems"
-                  [fontFamily]="menuFontFamily"
-                  [fontSize]="menuFontSize"
-                  [fontWeight]="menuFontWeight"
-                ></app-divided-menu>
+        <div class="home-title left-title-block">TaB.Lo</div>
+        <div class="left-bottom-area">
+            <div class="left-bottom-col">
+                <div class="left-middle-block">Middle Block</div>
+                <div class="left-bottom-block-custom">Bottom Block</div>
             </div>
-        </div>
-        <div class="left-bottom-block">
-            <span class="medias-label">MEDIAS</span>
-            <mat-icon svgIcon="github"></mat-icon>
-            <mat-icon svgIcon="linkedin"></mat-icon>
-            <mat-icon>mail</mat-icon>
+            <div class="center-left-block">
+                <!-- <app-animation-particule class="full-size"></app-animation-particule> -->
+                <!-- <app-point-cloud-image src="assets/images/brutal2.jpg"></app-point-cloud-image> -->
+            </div>
         </div>
     </div>
     <div class="center-block">
-        <div class="center-left-block">
-            <!-- <app-animation-particule class="full-size"></app-animation-particule> -->
-            <!-- <app-point-cloud-image src="assets/images/brutal2.jpg"></app-point-cloud-image> -->
-        </div>
         <div class="center-right-block">
             <app-point-cloud-image src="assets/images/brutal2.jpg"></app-point-cloud-image>
         </div>
     </div>
     <div class="right-block">
         <div class="right-top-block">
-            <div class="right-top-upper">
-                <app-sliding-shutter text="WOULD YOU LIKE TO KNOW MORE?"></app-sliding-shutter>
+            <div class="right-top-upper" (click)="goToSchoolProjects()" style="cursor:pointer;">
+                <app-sliding-shutter text="WOULD YOU LIKE TO <br> KNOW MORE?"> CLICK HERE </app-sliding-shutter>
             </div>
             <div class="right-top-lower">
                 <app-moving-banner [text]="scrollingText"></app-moving-banner>

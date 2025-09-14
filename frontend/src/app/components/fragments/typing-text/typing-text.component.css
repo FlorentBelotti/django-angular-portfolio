@@ -1,0 +1,19 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+.container {
+  display: flex; /* Assure que le contenu est bien contenu dans ce composant */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto; /* Empêche ce composant de s'étendre */
+}
+
+.heading {
+  color: #eee;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: right;
+  white-space: pre-wrap;
+}

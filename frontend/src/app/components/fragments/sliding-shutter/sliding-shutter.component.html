@@ -1,4 +1,7 @@
-<div class="animated-text-container">
-    <span class="animated-text">{{ text }}</span>
-    <div class="white-overlay"></div>
+<div class="animated-text-container" (mouseenter)="pauseAnimation()" (mouseleave)="resumeAnimation()">
+    <span class="animated-text" [innerHTML]="text"></span>
+    <div class="sliding-shutter-right-block">
+        <ng-content></ng-content>
+    </div>
+    <div class="white-overlay" [class.paused]="isPaused"></div>
 </div>

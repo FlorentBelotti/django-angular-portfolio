@@ -8,4 +8,12 @@ import { Component, Input } from '@angular/core';
 })
 export class SlidingShutterComponent {
   @Input() text: string = '';
+  isPaused = false;
+
+  pauseAnimation() {
+    this.isPaused = true;
+  }
+  resumeAnimation() {
+    this.isPaused = false;
+  }
 }

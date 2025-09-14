@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SideProjectsComponent } from './side-projects.component';
+import { FalloutTitleComponent } from './fallout-title.component';
 
-describe('SideProjectsComponent', () => {
-  let component: SideProjectsComponent;
-  let fixture: ComponentFixture<SideProjectsComponent>;
+describe('FalloutTitleComponent', () => {
+  let component: FalloutTitleComponent;
+  let fixture: ComponentFixture<FalloutTitleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SideProjectsComponent]
+      imports: [FalloutTitleComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SideProjectsComponent);
+    fixture = TestBed.createComponent(FalloutTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -12,7 +12,6 @@
 .scrolling-text {
     display: inline-block;
     white-space: nowrap;
-    /* color: white; */
     font-size: 4rem;
     font-weight: 700;
     padding: 10px 0;
